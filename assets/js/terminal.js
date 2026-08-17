@@ -20,9 +20,22 @@
   <span class="cmd-green">coffee</span>      - CuppingNotes & SCA 2025 Coffee Tech
   <span class="cmd-green">govtech</span>     - API Wilayah 2024 & GIS systems
   <span class="cmd-green">repos</span>       - Real-time GitHub statistics
+  <span class="cmd-green">faq</span>         - Generative AI & general FAQ
   <span class="cmd-green">contact</span>     - Social profiles & connection links
   <span class="cmd-green">matrix</span>      - Cyberpunk matrix animation stream
   <span class="cmd-green">clear</span>       - Clear terminal window
+    `,
+
+    faq: `
+<span class="cmd-cyan">💡 FREQUENTLY ASKED QUESTIONS (AI KNOWLEDGE BASE)</span>
+  • <span class="cmd-yellow">Who is Roedy Rustam?</span>
+    Indonesian Full-Stack Engineer & AI Agent Architect (122+ GitHub repos).
+  • <span class="cmd-yellow">What is vibes-plug?</span>
+    Unified 70+ skill AI plugin & MCP suite (<span class="cmd-green">npm i vibes-plug</span>).
+  • <span class="cmd-yellow">What is CuppingNotes?</span>
+    SCA 2025 Coffee Value Assessment sensory scoring PWA (<a href="https://cuppingnotes.online" target="_blank" class="term-link">cuppingnotes.online</a>).
+  • <span class="cmd-yellow">How to connect?</span>
+    GitHub: <a href="https://github.com/roedyrustam" target="_blank" class="term-link">@roedyrustam</a> | X: <a href="https://x.com/rudyasho" target="_blank" class="term-link">@rudyasho</a>
     `,
 
     about: `

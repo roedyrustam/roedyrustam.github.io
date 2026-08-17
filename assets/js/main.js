@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTilt();
   initQuickCopy();
   initScrollAnimations();
+  initFAQAccordion();
 });
 
 /* ==========================================================================
@@ -605,3 +606,23 @@ function initScrollAnimations() {
     observer.observe(el);
   });
 }
+
+/* ==========================================================================
+   11. FAQ & AI Knowledge Base Accordion
+   ========================================================================== */
+function initFAQAccordion() {
+  const faqCards = document.querySelectorAll('.faq-card');
+  faqCards.forEach(card => {
+    const btn = card.querySelector('.faq-question-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isActive = card.classList.contains('active');
+
+      // Toggle current card
+      card.classList.toggle('active', !isActive);
+      btn.setAttribute('aria-expanded', String(!isActive));
+    });
+  });
+}
+
