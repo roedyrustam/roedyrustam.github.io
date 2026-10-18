@@ -647,7 +647,7 @@ function initFAQAccordion() {
    12. WhatsApp Fast-Track Booking System (P1)
    ========================================================================== */
 function initWhatsAppBooking() {
-  const phone = document.body.dataset.waPhone || '6281200000000';
+  const phone = document.body.dataset.waPhone || '6281241003047';
   
   const TEMPLATES = {
     it: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai arsitektur sistem IT dan audit performa untuk perusahaan kami.",

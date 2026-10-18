@@ -97,18 +97,18 @@ Undang trainer: <a href="#contact" class="term-link">#contact</a>
     wa: `
 <span class="cmd-green">💬 JALUR CEPAT WHATSAPP LANGSUNG DENGAN ROEDY RUSTAM</span>
 Pilih salah satu template pesan untuk membuka WhatsApp:
-  1. 🏛️ <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20ingin%20berkonsultasi%20mengenai%20arsitektur%20sistem%20IT%20dan%20audit%20performa%20untuk%20perusahaan%20kami." target="_blank" class="term-link">[Buka Chat Konsultasi IT Enterprise]</a>
-  2. 🤖 <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20kami%20tertarik%20mengundang%20Anda%20sebagai%20Trainer%20Workshop%20AI%20%2F%20konsultasi%20implementasi%20AI%20Agents%20untuk%20tim%20kami." target="_blank" class="term-link">[Buka Chat Training AI & Workshop]</a>
-  3. 🏪 <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20pelaku%20usaha%20UMKM%20ingin%20berkonsultasi%20mengenai%20sistem%20kasir%20cloud%20POS%2C%20inventaris%2C%20dan%20digitalisasi%20operasional." target="_blank" class="term-link">[Buka Chat Konsultasi Digitalisasi UMKM]</a>
+  1. 🏛️ <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20ingin%20berkonsultasi%20mengenai%20arsitektur%20sistem%20IT%20dan%20audit%20performa%20untuk%20perusahaan%20kami." target="_blank" class="term-link">[Buka Chat Konsultasi IT Enterprise]</a>
+  2. 🤖 <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20kami%20tertarik%20mengundang%20Anda%20sebagai%20Trainer%20Workshop%20AI%20%2F%20konsultasi%20implementasi%20AI%20Agents%20untuk%20tim%20kami." target="_blank" class="term-link">[Buka Chat Training AI & Workshop]</a>
+  3. 🏪 <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20pelaku%20usaha%20UMKM%20ingin%20berkonsultasi%20mengenai%20sistem%20kasir%20cloud%20POS%2C%20inventaris%2C%20dan%20digitalisasi%20operasional." target="_blank" class="term-link">[Buka Chat Konsultasi Digitalisasi UMKM]</a>
 Atau klik tombol mengambang hijau di pojok kanan bawah layar!
     `,
 
     whatsapp: `
 <span class="cmd-green">💬 JALUR CEPAT WHATSAPP LANGSUNG DENGAN ROEDY RUSTAM</span>
 Pilih salah satu template pesan untuk membuka WhatsApp:
-  1. 🏛️ <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20ingin%20berkonsultasi%20mengenai%20arsitektur%20sistem%20IT%20dan%20audit%20performa%20untuk%20perusahaan%20kami." target="_blank" class="term-link">[Buka Chat Konsultasi IT Enterprise]</a>
-  2. 🤖 <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20kami%20tertarik%20mengundang%20Anda%20sebagai%20Trainer%20Workshop%20AI%20%2F%20konsultasi%20implementasi%20AI%20Agents%20untuk%20tim%20kami." target="_blank" class="term-link">[Buka Chat Training AI & Workshop]</a>
-  3. 🏪 <a href="https://wa.me/6281200000000?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20pelaku%20usaha%20UMKM%20ingin%20berkonsultasi%20mengenai%20sistem%20kasir%20cloud%20POS%2C%20inventaris%2C%20dan%20digitalisasi%20operasional." target="_blank" class="term-link">[Buka Chat Konsultasi Digitalisasi UMKM]</a>
+  1. 🏛️ <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20ingin%20berkonsultasi%20mengenai%20arsitektur%20sistem%20IT%20dan%20audit%20performa%20untuk%20perusahaan%20kami." target="_blank" class="term-link">[Buka Chat Konsultasi IT Enterprise]</a>
+  2. 🤖 <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20kami%20tertarik%20mengundang%20Anda%20sebagai%20Trainer%20Workshop%20AI%20%2F%20konsultasi%20implementasi%20AI%20Agents%20untuk%20tim%20kami." target="_blank" class="term-link">[Buka Chat Training AI & Workshop]</a>
+  3. 🏪 <a href="https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20pelaku%20usaha%20UMKM%20ingin%20berkonsultasi%20mengenai%20sistem%20kasir%20cloud%20POS%2C%20inventaris%2C%20dan%20digitalisasi%20operasional." target="_blank" class="term-link">[Buka Chat Konsultasi Digitalisasi UMKM]</a>
     `,
 
     photo: `
