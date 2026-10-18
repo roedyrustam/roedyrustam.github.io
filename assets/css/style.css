@@ -1052,6 +1052,170 @@ a {
 }
 
 /* ==========================================================================
+   Services & Consulting Section (Konsultan IT, Praktisi AI, UMKM, Trainer)
+   ========================================================================== */
+.services-consulting-section {
+  padding: 5rem 0 3.5rem;
+  position: relative;
+}
+
+.services-header-box {
+  margin-bottom: 2.75rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  border-color: rgba(0, 242, 254, 0.45);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 242, 254, 0.12);
+  transform: translateY(-4px);
+}
+
+.service-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.service-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--cyan-neon);
+}
+
+.service-icon-box.coffee-box {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: var(--amber-coffee);
+}
+
+.service-role-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.service-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.service-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--cyan-neon);
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+}
+
+.service-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.service-proof-box {
+  background: rgba(0, 242, 254, 0.04);
+  border: 1px solid rgba(0, 242, 254, 0.18);
+  border-left: 3px solid var(--cyan-neon);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-proof-box.coffee-proof {
+  background: rgba(245, 158, 11, 0.04);
+  border-color: rgba(245, 158, 11, 0.2);
+  border-left-color: var(--amber-coffee);
+}
+
+.proof-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cyan-neon);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.proof-header.coffee-p {
+  color: var(--amber-coffee);
+}
+
+.proof-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.proof-item {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.proof-item a {
+  color: var(--cyan-neon);
+  text-decoration: underline;
+}
+
+.proof-item a:hover {
+  color: #FFFFFF;
+}
+
+.service-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
    Featured Project Spotlight Banner
    ========================================================================== */
 .featured-spotlight-section {
@@ -1956,6 +2120,7 @@ a {
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2.75rem; }
   .about-stats-panel { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .services-grid { grid-template-columns: 1fr; }
   .spotlight-banner { grid-template-columns: 1fr; }
   .coffee-card-wrapper { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.8rem; }

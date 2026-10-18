@@ -36,6 +36,17 @@
   </url>
 
   <url>
+    <loc>https://roedyrustam.github.io/#services</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://roedyrustam.github.io/assets/images/roedy-rustam.jpg</image:loc>
+      <image:title>Roedy Rustam — Konsultan IT, Praktisi AI &amp; Konsultan UMKM Indonesia</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://roedyrustam.github.io/#spotlight</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>

@@ -15,6 +15,11 @@
 <span class="cmd-cyan">AVAILABLE COMMANDS:</span>
   <span class="cmd-green">about</span>       - Bio, verified profile & architect manifesto
   <span class="cmd-green">photo</span>       - View official portrait photo & verified card
+  <span class="cmd-green">services</span>    - Consulting & Training portfolio (IT, AI, UMKM, Trainer)
+  <span class="cmd-green">konsultan</span>   - Konsultan IT & Enterprise Architecture proof
+  <span class="cmd-green">ai</span>          - Praktisi AI & Multi-Agent Swarms (vibes-plug & sinapsai)
+  <span class="cmd-green">umkm</span>        - Konsultan Digitalisasi UMKM & Retail POS
+  <span class="cmd-green">trainer</span>     - Trainer IT & Corporate AI Workshops
   <span class="cmd-green">skills</span>      - Technical stack & competency matrix (155 skills)
   <span class="cmd-green">projects</span>    - Featured digital products & creations
   <span class="cmd-green">vibes</span>       - AI agent & MCP ecosystem (vibes-plug, 77+ ⭐)
@@ -25,6 +30,67 @@
   <span class="cmd-green">contact</span>     - Social profiles & connection links
   <span class="cmd-green">matrix</span>      - Cyberpunk matrix animation stream
   <span class="cmd-green">clear</span>       - Clear terminal window
+    `,
+
+    services: `
+<span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="cmd-bold cmd-cyan">LAYANAN KONSULTASI & PELATIHAN RESMI — ROEDY RUSTAM</span>
+<span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+Solusi terukur dan terbukti melalui 132+ repositori GitHub:
+  1. <span class="cmd-green">Konsultan IT</span>        : Enterprise architecture, Core Web Vitals 100/100, API Wilayah.
+  2. <span class="cmd-green">Praktisi AI</span>         : vibes-plug (155 skills), sinapsai gateway, MCP v1.x.
+  3. <span class="cmd-green">Konsultan UMKM</span>      : Kasir Simpel POS, BeansHub ERP, CuppingNotes SCA.
+  4. <span class="cmd-green">Trainer IT</span>          : Corporate workshop AI agent, prompt engineering, anti-slop.
+Type <span class="cmd-yellow">'konsultan'</span>, <span class="cmd-yellow">'ai'</span>, <span class="cmd-yellow">'umkm'</span>, atau <span class="cmd-yellow">'trainer'</span> untuk rincian bukti karya!
+    `,
+
+    layanan: `
+[Redirected to services]
+Type <span class="cmd-yellow">'services'</span> to see all consulting offerings.
+    `,
+
+    konsultan: `
+<span class="cmd-cyan">🏛️ KONSULTAN IT & ENTERPRISE ARCHITECTURE (INDONESIA)</span>
+Advisory arsitektur sistem skala tinggi, optimasi performa & open data:
+  • <span class="cmd-yellow">Bukti Empiris</span> : Pencipta <a href="https://github.com/roedyrustam/API-Wilayah-2024" target="_blank" class="term-link">API-Wilayah-2024</a> (38 Provinsi, 514 Kab/Kota, 83.000+ Desa, 21⭐, 10 forks).
+  • <span class="cmd-yellow">Portofolio</span>    : 132+ repositori publik (TypeScript, Node.js, PHP, Python, Rust).
+  • <span class="cmd-yellow">Layanan</span>       : Audit arsitektur sistem, Core Web Vitals 100/100, database tuning SQL/PostGIS, dan migrasi zero-downtime.
+Hubungi untuk konsultasi: <a href="#contact" class="term-link">#contact</a>
+    `,
+
+    ai: `
+<span class="cmd-purple">🤖 PRAKTISI AI & MULTI-AGENT SWARMS (INDONESIA)</span>
+Implementasi sistem AI agentic otonom dan in-process gateway:
+  • <span class="cmd-yellow">vibes-plug</span>    : 155 specialized AI skills & MCP tools (<a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">github.com/roedyrustam/vibes-plug</a>, 77⭐).
+  • <span class="cmd-yellow">sinapsai</span>      : In-process AI Gateway dengan Circuit Breaker & Failover (<a href="https://github.com/roedyrustam/sinapsai" target="_blank" class="term-link">github.com/roedyrustam/sinapsai</a>).
+  • <span class="cmd-yellow">doku-gemini</span>   : Agentic commerce via DOKU Payment Gateway Model Context Protocol.
+  • <span class="cmd-yellow">Layanan</span>       : Multi-agent swarm design, custom MCP servers, hybrid reasoning LLM, prompt injection firewall.
+    `,
+
+    praktisi: `
+[Lihat rincian Praktisi AI dengan mengetik: <span class="cmd-yellow">'ai'</span>]
+    `,
+
+    umkm: `
+<span class="cmd-yellow">🏪 KONSULTAN DIGITALISASI & RETAIL UMKM INDONESIA</span>
+Transformasi digital hemat biaya tanpa biaya langganan mencekik:
+  • <span class="cmd-green">Kasir Simpel</span>   : Cloud Point of Sale (POS) offline-first PWA untuk UMKM & kafe (<a href="https://github.com/roedyrustam/posas" target="_blank" class="term-link">github.com/roedyrustam/posas</a>).
+  • <span class="cmd-green">BeansHub ERP</span>   : Manajemen batch roastery, inventaris biji kopi, & order tracking (<a href="https://github.com/roedyrustam/beanshub1" target="_blank" class="term-link">github.com/roedyrustam/beanshub1</a>).
+  • <span class="cmd-green">CuppingNotes</span>   : Platform evaluasi sensori SCA 2025 CVA standar dunia (<a href="https://cuppingnotes.online" target="_blank" class="term-link">cuppingnotes.online</a>).
+  • <span class="cmd-green">Layanan</span>        : Modernisasi POS ritel, manajemen rantai pasok UMKM, dan standarisasi mutu produk.
+    `,
+
+    trainer: `
+<span class="cmd-green">🎓 TRAINER IT & WORKSHOP AI DEVELOPER INDONESIA</span>
+Pelatihan intensif engineering untuk korporasi, institusi, dan software house:
+  • <span class="cmd-yellow">Kurikulum Swarm</span> : Berbasis ekosistem <a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">vibes-plug</a> yang teruji di industri.
+  • <span class="cmd-yellow">Topik Utama</span>     : Adopsi AI Agent (Gemini 4 Pro, Claude Code, Cursor), Model Context Protocol (MCP), Autonomous TDD Debugging, dan Doktrin Anti-Slop (Zero Tech Debt).
+  • <span class="cmd-yellow">Format</span>          : Hands-on coding workshop, arsitektur review bootcamp, dan sesi advisory tim.
+Undang trainer: <a href="#contact" class="term-link">#contact</a>
+    `,
+
+    workshop: `
+[Lihat jadwal dan materi workshop dengan mengetik: <span class="cmd-yellow">'trainer'</span>]
     `,
 
     photo: `
