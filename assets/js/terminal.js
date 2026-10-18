@@ -207,11 +207,20 @@ Live platform: <a href="https://cuppingnotes.online" target="_blank" class="term
     `,
 
     govtech: `
-<span class="cmd-cyan">🏛️ GOVTECH & INDONESIAN OPEN DATA</span>
+<span class="cmd-cyan">🏛️ GOVTECH &amp; INDONESIAN OPEN DATA</span>
 High-impact public sector digital transformations:
   • <span class="cmd-bold">API-Wilayah-2024</span>: 38 Provinces, 514 Cities/Regencies, 7,200+ Districts, 83,000+ Villages (21 Stars, 10 Forks).
-  • <span class="cmd-bold">Peta Desa Panaikang</span>: WebGIS land ownership & demographic intelligence portal.
-  • <span class="cmd-bold">Pandu Talenta</span>: Village governance starter kit & youth ecosystem.
+  • <span class="cmd-bold">Interactive Live Explorer</span>: <a href="#govtech-explorer" class="term-link">[Buka Live Explorer 38 Provinsi]</a>
+  • <span class="cmd-bold">Peta Desa Panaikang</span>: WebGIS land ownership &amp; demographic intelligence portal.
+  • <span class="cmd-bold">Pandu Talenta</span>: Village governance starter kit &amp; youth ecosystem.
+GitHub: <a href="https://github.com/roedyrustam/API-Wilayah-2024" target="_blank" class="term-link">github.com/roedyrustam/API-Wilayah-2024</a>
+    `,
+
+    wilayah: `
+<span class="cmd-cyan">🗺️ LIVE EXPLORER API WILAYAH INDONESIA 2024</span>
+Database &amp; REST API 38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, 83.000+ Desa.
+  • Buka widget interaktif langsung: <a href="#govtech-explorer" class="term-link">#govtech-explorer</a>
+  • Repository &amp; SQL Dump: <a href="https://github.com/roedyrustam/API-Wilayah-2024" target="_blank" class="term-link">roedyrustam/API-Wilayah-2024</a>
     `,
 
     repos: `

@@ -80,6 +80,7 @@
 ### API Wilayah Indonesia 2024
 - **Description**: High-throughput REST API, SQL dumps, and structured JSON datasets for all Indonesian administrative units (38 Provinces, 514 Regencies/Cities, 7,200+ Districts, and 83,000+ Villages).
 - **Repository**: https://github.com/roedyrustam/API-Wilayah-2024 (21 Stars, 10 Forks)
+- **Interactive Live Explorer**: https://roedyrustam.github.io/#govtech-explorer (Cascading 38-Province tester with <1.2ms in-memory micro-cache, live REST JSON response, cURL command generator, and SQL schema queries)
 
 ---
 

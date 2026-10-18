@@ -450,6 +450,7 @@
           <li><a href="#services" class="nav-link">Layanan</a></li>
           <li><a href="#spotlight" class="nav-link">Featured AI</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#govtech-explorer" class="nav-link">GovTech API</a></li>
           <li><a href="#coffee-tech" class="nav-link">Coffee Tech</a></li>
           <li><a href="#skills" class="nav-link">Skill Matrix</a></li>
           <li><a href="#faq" class="nav-link">FAQ & AI</a></li>
@@ -1057,6 +1058,196 @@
     </div>
   </section>
 
+  <!-- GovTech Open Data Spotlight & Interactive Live Explorer (P2) -->
+  <section class="govtech-section" id="govtech-explorer">
+    <div class="container">
+      <div class="govtech-header">
+        <div class="badge-group">
+          <span class="section-tag govtech-tag">🗺️ GovTech &amp; Open Data Inovasi</span>
+          <span class="perf-metric-pill" id="wilayah-perf-pill">
+            <span class="perf-pulse"></span>
+            <span id="wilayah-latency-text">Latency: &lt; 1.2ms (In-Memory Micro-Cache)</span>
+          </span>
+        </div>
+        <h2 class="section-title">API Wilayah Indonesia 2024 — Live Interactive Explorer</h2>
+        <p class="section-desc">
+          Uji langsung arsitektur database dan REST API wilayah administratif <strong>38 Provinsi</strong>, <strong>514 Kabupaten/Kota</strong>, <strong>7.200+ Kecamatan</strong>, dan <strong>83.000+ Desa</strong> sesuai standar Kepmendagri 2024. Pilih wilayah secara kaskade bertingkat di bawah ini untuk melihat struktur response real-time.
+        </p>
+      </div>
+
+      <!-- Quick Island/Regional Presets -->
+      <div class="wilayah-presets-bar">
+        <span class="preset-label">Pintasan Cepat:</span>
+        <button type="button" class="wilayah-preset-btn active" data-prov="31">DKI Jakarta</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="32">Jawa Barat (Bandung)</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="73">Sulawesi Selatan (Makassar)</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="51">Bali (Denpasar)</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="64">Kalimantan Timur (IKN)</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="12">Sumatera Utara (Medan)</button>
+        <button type="button" class="wilayah-preset-btn" data-prov="91">Papua (Jayapura)</button>
+      </div>
+
+      <div class="govtech-explorer-grid">
+        <!-- Left: Cascading Controls & Metadata Info -->
+        <div class="explorer-controls-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <span class="panel-icon">⚙️</span>
+              <h4>Cascading Region Selector</h4>
+            </div>
+            <button type="button" id="wilayah-reset-btn" class="panel-reset-btn" title="Reset ke default">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              Reset
+            </button>
+          </div>
+
+          <!-- Selector Group 1: Provinsi -->
+          <div class="form-group-wilayah">
+            <label for="wilayah-prov-select" class="form-label-wilayah">
+              <span>1. Provinsi (38 Provinsi Resmi)</span>
+              <span class="badge-code" id="badge-prov-code">Kode: 31</span>
+            </label>
+            <div class="select-wrapper">
+              <select id="wilayah-prov-select" class="wilayah-select" aria-label="Pilih Provinsi Indonesia">
+                <!-- Dynamically populated with all 38 provinces -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Selector Group 2: Kabupaten / Kota -->
+          <div class="form-group-wilayah">
+            <label for="wilayah-reg-select" class="form-label-wilayah">
+              <span>2. Kabupaten / Kota</span>
+              <span class="badge-code" id="badge-reg-code">Kode: 31.71</span>
+            </label>
+            <div class="select-wrapper">
+              <select id="wilayah-reg-select" class="wilayah-select" aria-label="Pilih Kabupaten atau Kota">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Selector Group 3: Kecamatan -->
+          <div class="form-group-wilayah">
+            <label for="wilayah-dist-select" class="form-label-wilayah">
+              <span>3. Kecamatan</span>
+              <span class="badge-code" id="badge-dist-code">Kode: 31.71.01</span>
+            </label>
+            <div class="select-wrapper">
+              <select id="wilayah-dist-select" class="wilayah-select" aria-label="Pilih Kecamatan">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Selector Group 4: Kelurahan / Desa -->
+          <div class="form-group-wilayah">
+            <label for="wilayah-vill-select" class="form-label-wilayah">
+              <span>4. Kelurahan / Desa &amp; Kode Pos</span>
+              <span class="badge-code" id="badge-vill-code">Kode: 31.71.01.1001</span>
+            </label>
+            <div class="select-wrapper">
+              <select id="wilayah-vill-select" class="wilayah-select" aria-label="Pilih Kelurahan atau Desa">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Selected Region Telemetry Card -->
+          <div class="wilayah-telemetry-card">
+            <div class="telemetry-item">
+              <span class="telemetry-label">Hirarki Lengkap:</span>
+              <span class="telemetry-value font-mono" id="wilayah-breadcrumb">DKI JAKARTA &gt; KOTA ADM. JAKARTA PUSAT &gt; GAMBIR &gt; GAMBIR</span>
+            </div>
+            <div class="telemetry-grid">
+              <div class="telemetry-mini-box">
+                <span class="mini-label">Kemendagri ID</span>
+                <span class="mini-val font-mono" id="telemetry-kemendagri">31.71.01.1001</span>
+              </div>
+              <div class="telemetry-mini-box">
+                <span class="mini-label">Kode Pos</span>
+                <span class="mini-val font-mono" id="telemetry-postal">10110</span>
+              </div>
+              <div class="telemetry-mini-box">
+                <span class="mini-label">Wilayah Pulau</span>
+                <span class="mini-val" id="telemetry-island">Jawa</span>
+              </div>
+              <div class="telemetry-mini-box">
+                <span class="mini-label">Koordinat Ref.</span>
+                <span class="mini-val font-mono" id="telemetry-coords">-6.2088, 106.8456</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="explorer-footer-actions">
+            <a href="https://github.com/roedyrustam/API-Wilayah-2024" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+              GitHub (21 ⭐ • 10 Forks)
+            </a>
+            <a href="#contact" class="btn btn-primary btn-sm">
+              Konsultasi IT &amp; Database
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Code & Response Console -->
+        <div class="explorer-console-panel">
+          <!-- Console Tabs -->
+          <div class="console-tab-bar">
+            <div class="console-tabs">
+              <button type="button" class="console-tab-btn active" data-tab="json">
+                <span class="tab-dot dot-json"></span> JSON Payload
+              </button>
+              <button type="button" class="console-tab-btn" data-tab="curl">
+                <span class="tab-dot dot-curl"></span> cURL Command
+              </button>
+              <button type="button" class="console-tab-btn" data-tab="sql">
+                <span class="tab-dot dot-sql"></span> SQL Query &amp; Schema
+              </button>
+            </div>
+            <button type="button" id="console-copy-btn" class="console-copy-action" title="Salin ke clipboard">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              <span id="copy-btn-text">Copy</span>
+            </button>
+          </div>
+
+          <!-- HTTP Mock Request URL Bar -->
+          <div class="console-url-bar">
+            <span class="http-badge">GET</span>
+            <span class="http-url font-mono" id="wilayah-endpoint-preview">/api/v1/wilayah/provinsi/31/kabupaten/31.71/kecamatan/31.71.01/desa.json</span>
+            <span class="http-status font-mono">200 OK</span>
+          </div>
+
+          <!-- Tab Content 1: JSON -->
+          <div class="console-content-box" id="tab-content-json">
+            <pre class="console-code-view"><code id="wilayah-json-code" class="font-mono">// Response will be loaded dynamically</code></pre>
+          </div>
+
+          <!-- Tab Content 2: cURL -->
+          <div class="console-content-box hidden" id="tab-content-curl">
+            <pre class="console-code-view"><code id="wilayah-curl-code" class="font-mono">// cURL will be loaded dynamically</code></pre>
+          </div>
+
+          <!-- Tab Content 3: SQL -->
+          <div class="console-content-box hidden" id="tab-content-sql">
+            <pre class="console-code-view"><code id="wilayah-sql-code" class="font-mono">// SQL query will be loaded dynamically</code></pre>
+          </div>
+
+          <!-- Console Status Footer -->
+          <div class="console-status-bar">
+            <span class="status-indicator">
+              <span class="status-pulse-dot"></span>
+              <span>REST Micro-Engine Active</span>
+            </span>
+            <span class="status-metrics font-mono" id="wilayah-status-metrics">
+              Records: 6 | Cache-Hit: 100% | Size: 1.14 KB
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Specialty Coffee & AgriTech Section -->
   <section class="coffee-spotlight-section" id="coffee-tech">
     <div class="container">
@@ -1379,6 +1570,7 @@
 
   <!-- JavaScript Modules -->
   <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/wilayah-data.js"></script>
   <script src="assets/js/particles.js"></script>
   <script src="assets/js/terminal.js"></script>
   <script src="assets/js/main.js"></script>

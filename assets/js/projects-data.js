@@ -270,11 +270,12 @@ const PROJECTS_DATA = [
     tags: ["Open Data", "Indonesia", "REST API", "Provinsi", "Kabupaten", "Kecamatan", "Desa"],
     description: "Dataset komprehensif dan REST API data wilayah administratif Indonesia terlengkap (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) dengan skema relasional teroptimasi untuk integrasi aplikasi nasional.",
     github: "https://github.com/roedyrustam/API-Wilayah-2024",
-    demo: null,
+    demo: "#govtech-explorer",
     badge: "⭐ 21 Stars • 10 Forks",
     icon: "map-pin",
     highlights: [
       "Lengkap 38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, 83.000+ Desa",
+      "Interactive Live Cascading Explorer terintegrasi di halaman ini",
       "Format SQL dump, JSON, dan PHP REST endpoint siap pakai",
       "Digunakan oleh puluhan developer di berbagai aplikasi publik"
     ]

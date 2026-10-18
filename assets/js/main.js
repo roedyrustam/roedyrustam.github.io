@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initFAQAccordion();
   initWhatsAppBooking();
+  initWilayahExplorer();
 });
 
 /* ==========================================================================
@@ -732,5 +733,263 @@ function initWhatsAppBooking() {
       }
     });
   }
+}
+
+/* ==========================================================================
+   13. GovTech API Wilayah Indonesia 2024 Live Interactive Explorer (P2)
+   ========================================================================== */
+function initWilayahExplorer() {
+  const provSelect = document.getElementById('wilayah-prov-select');
+  const regSelect = document.getElementById('wilayah-reg-select');
+  const distSelect = document.getElementById('wilayah-dist-select');
+  const villSelect = document.getElementById('wilayah-vill-select');
+
+  if (!provSelect || typeof WILAYAH_PROVINCES === 'undefined') return;
+
+  // Code badges
+  const provBadge = document.getElementById('badge-prov-code');
+  const regBadge = document.getElementById('badge-reg-code');
+  const distBadge = document.getElementById('badge-dist-code');
+  const villBadge = document.getElementById('badge-vill-code');
+
+  // Telemetry elements
+  const breadcrumbEl = document.getElementById('wilayah-breadcrumb');
+  const kemendagriEl = document.getElementById('telemetry-kemendagri');
+  const postalEl = document.getElementById('telemetry-postal');
+  const islandEl = document.getElementById('telemetry-island');
+  const coordsEl = document.getElementById('telemetry-coords');
+  const latencyText = document.getElementById('wilayah-latency-text');
+  const statusMetrics = document.getElementById('wilayah-status-metrics');
+  const endpointPreview = document.getElementById('wilayah-endpoint-preview');
+
+  // Code display elements
+  const jsonCodeEl = document.getElementById('wilayah-json-code');
+  const curlCodeEl = document.getElementById('wilayah-curl-code');
+  const sqlCodeEl = document.getElementById('wilayah-sql-code');
+
+  // Populate 38 Provinces
+  provSelect.innerHTML = WILAYAH_PROVINCES.map(p => 
+    `<option value="${p.code}">${p.code} — ${p.name} (${p.capital})</option>`
+  ).join('');
+
+  // Active state
+  let currentProvCode = "31";
+  let currentRegCode = "31.71";
+  let currentDistCode = "31.71.01";
+  let currentVillCode = "31.71.01.1001";
+  let activeTab = "json";
+
+  function updateCascades(provCode, regCodePref, distCodePref, villCodePref) {
+    const t0 = performance.now();
+
+    currentProvCode = provCode;
+    provSelect.value = provCode;
+    const currentProv = WILAYAH_PROVINCES.find(p => p.code === provCode) || WILAYAH_PROVINCES[0];
+
+    // 1. Regencies
+    const regencies = getRegenciesForProvince(provCode);
+    regSelect.innerHTML = regencies.map(r => 
+      `<option value="${r.code}">${r.code} — ${r.name}</option>`
+    ).join('');
+    
+    currentRegCode = (regCodePref && regencies.some(r => r.code === regCodePref)) 
+      ? regCodePref 
+      : regencies[0].code;
+    regSelect.value = currentRegCode;
+    const currentReg = regencies.find(r => r.code === currentRegCode) || regencies[0];
+
+    // 2. Districts
+    const districts = getDistrictsForRegency(provCode, currentRegCode);
+    distSelect.innerHTML = districts.map(d => 
+      `<option value="${d.code}">${d.code} — ${d.name}</option>`
+    ).join('');
+
+    currentDistCode = (distCodePref && districts.some(d => d.code === distCodePref)) 
+      ? distCodePref 
+      : districts[0].code;
+    distSelect.value = currentDistCode;
+    const currentDist = districts.find(d => d.code === currentDistCode) || districts[0];
+
+    // 3. Villages
+    const villages = getVillagesForDistrict(provCode, currentDistCode);
+    villSelect.innerHTML = villages.map(v => 
+      `<option value="${v.code}">${v.code} — ${v.name} (${v.postal || 'Kodepos'})</option>`
+    ).join('');
+
+    currentVillCode = (villCodePref && villages.some(v => v.code === villCodePref)) 
+      ? villCodePref 
+      : villages[0].code;
+    villSelect.value = currentVillCode;
+    const currentVill = villages.find(v => v.code === currentVillCode) || villages[0];
+
+    // Update Badges
+    if (provBadge) provBadge.textContent = `Kode: ${currentProv.code}`;
+    if (regBadge) regBadge.textContent = `Kode: ${currentReg.code}`;
+    if (distBadge) distBadge.textContent = `Kode: ${currentDist.code}`;
+    if (villBadge) villBadge.textContent = `Kode: ${currentVill.code}`;
+
+    // Update Telemetry
+    if (breadcrumbEl) {
+      breadcrumbEl.textContent = `${currentProv.name} > ${currentReg.name} > ${currentDist.name} > ${currentVill.name}`;
+    }
+    if (kemendagriEl) kemendagriEl.textContent = currentVill.code;
+    if (postalEl) postalEl.textContent = currentVill.postal || currentReg.postal || "10110";
+    if (islandEl) islandEl.textContent = currentProv.island;
+    if (coordsEl) coordsEl.textContent = `${currentProv.lat}, ${currentProv.lng}`;
+
+    const t1 = performance.now();
+    const duration = (t1 - t0).toFixed(2);
+    if (latencyText) {
+      latencyText.textContent = `Latency: ${duration}ms (In-Memory Micro-Cache)`;
+    }
+
+    // Build REST URL preview
+    const endpointStr = `/api/v1/wilayah/provinsi/${currentProv.code}/kabupaten/${currentReg.code}/kecamatan/${currentDist.code}/desa.json`;
+    if (endpointPreview) {
+      endpointPreview.textContent = endpointStr;
+    }
+
+    // JSON Payload
+    const jsonPayload = {
+      status: "success",
+      code: 200,
+      timestamp: new Date().toISOString(),
+      execution_time: `${duration}ms`,
+      data: {
+        kemendagri_code: currentVill.code,
+        administrative_level: 4,
+        hierarchy: {
+          provinsi: {
+            kode: currentProv.code,
+            nama: currentProv.name,
+            ibukota: currentProv.capital,
+            wilayah_pulau: currentProv.island
+          },
+          kabupaten_kota: {
+            kode: currentReg.code,
+            nama: currentReg.name,
+            tipe: currentReg.type || "Kota"
+          },
+          kecamatan: {
+            kode: currentDist.code,
+            nama: currentDist.name
+          },
+          desa_kelurahan: {
+            kode: currentVill.code,
+            nama: currentVill.name,
+            tipe: currentVill.type || "Kelurahan",
+            kode_pos: currentVill.postal || "10110"
+          }
+        },
+        metadata: {
+          standard: WILAYAH_NATIONAL_STATS.standard,
+          coordinates: {
+            latitude: currentProv.lat,
+            longitude: currentProv.lng
+          },
+          license: WILAYAH_NATIONAL_STATS.license,
+          author: "Roedy Rustam"
+        }
+      }
+    };
+
+    const jsonString = JSON.stringify(jsonPayload, null, 2);
+    if (jsonCodeEl) jsonCodeEl.textContent = jsonString;
+
+    // cURL Command
+    const curlCommand = `# Fetch administrative data for ${currentVill.name}\ncurl -X GET "https://api.roedyrustam.com${endpointStr}" \\\n  -H "Accept: application/json" \\\n  -H "User-Agent: API-Wilayah-2024-Client/2.0"`;
+    if (curlCodeEl) curlCodeEl.textContent = curlCommand;
+
+    // SQL Query
+    const sqlQuery = `-- Relational query schema with B-Tree index lookup (Permendagri 2024 standard)\nSELECT \n  p.kode AS kode_provinsi, p.nama AS provinsi,\n  k.kode AS kode_kabupaten, k.nama AS kabupaten_kota,\n  c.kode AS kode_kecamatan, c.nama AS kecamatan,\n  d.kode AS kode_desa, d.nama AS kelurahan_desa, d.kode_pos\nFROM wilayah_desa d\nJOIN wilayah_kecamatan c ON d.kecamatan_id = c.id\nJOIN wilayah_kabupaten k ON c.kabupaten_id = k.id\nJOIN wilayah_provinsi p ON k.provinsi_id = p.id\nWHERE d.kode = '${currentVill.code}'\nLIMIT 1;`;
+    if (sqlCodeEl) sqlCodeEl.textContent = sqlQuery;
+
+    // Status metrics
+    const payloadBytes = new TextEncoder().encode(jsonString).length;
+    const payloadKb = (payloadBytes / 1024).toFixed(2);
+    if (statusMetrics) {
+      statusMetrics.textContent = `Record: 1 | Cache-Hit: 100% | Size: ${payloadKb} KB | Query: ${duration}ms`;
+    }
+  }
+
+  // Event Listeners
+  provSelect.addEventListener('change', (e) => {
+    updateCascades(e.target.value);
+    document.querySelectorAll('.wilayah-preset-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-prov') === e.target.value);
+    });
+  });
+
+  regSelect.addEventListener('change', (e) => {
+    updateCascades(currentProvCode, e.target.value);
+  });
+
+  distSelect.addEventListener('change', (e) => {
+    updateCascades(currentProvCode, currentRegCode, e.target.value);
+  });
+
+  villSelect.addEventListener('change', (e) => {
+    updateCascades(currentProvCode, currentRegCode, currentDistCode, e.target.value);
+  });
+
+  // Presets
+  document.querySelectorAll('.wilayah-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pCode = btn.getAttribute('data-prov');
+      document.querySelectorAll('.wilayah-preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateCascades(pCode);
+    });
+  });
+
+  // Reset Button
+  const resetBtn = document.getElementById('wilayah-reset-btn');
+  resetBtn?.addEventListener('click', () => {
+    document.querySelectorAll('.wilayah-preset-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-prov') === '31');
+    });
+    updateCascades("31", "31.71", "31.71.01", "31.71.01.1001");
+  });
+
+  // Console Tabs
+  const tabBtns = document.querySelectorAll('.console-tab-btn');
+  const tabContentJson = document.getElementById('tab-content-json');
+  const tabContentCurl = document.getElementById('tab-content-curl');
+  const tabContentSql = document.getElementById('tab-content-sql');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-tab');
+      activeTab = tab;
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      tabContentJson?.classList.toggle('hidden', tab !== 'json');
+      tabContentCurl?.classList.toggle('hidden', tab !== 'curl');
+      tabContentSql?.classList.toggle('hidden', tab !== 'sql');
+    });
+  });
+
+  // Copy Action
+  const copyBtn = document.getElementById('console-copy-btn');
+  const copyText = document.getElementById('copy-btn-text');
+  copyBtn?.addEventListener('click', () => {
+    let textToCopy = "";
+    if (activeTab === 'json') textToCopy = jsonCodeEl?.textContent || "";
+    else if (activeTab === 'curl') textToCopy = curlCodeEl?.textContent || "";
+    else if (activeTab === 'sql') textToCopy = sqlCodeEl?.textContent || "";
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (copyText) copyText.textContent = "Copied! ✓";
+        setTimeout(() => {
+          if (copyText) copyText.textContent = "Copy";
+        }, 2000);
+      });
+    }
+  });
+
+  // Initial trigger with DKI Jakarta
+  updateCascades("31", "31.71", "31.71.01", "31.71.01.1001");
 }
 

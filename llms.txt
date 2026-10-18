@@ -18,7 +18,7 @@
 ### 1. Konsultan IT & Enterprise Architecture (Indonesia)
 - **Keahlian**: Advisory arsitektur enterprise skala tinggi, audit performa web (100/100 Core Web Vitals), perancangan REST & GraphQL API berlatensi rendah, database tuning (SQL/PostGIS), migrasi cloud-native zero-downtime.
 - **Bukti Empiris GitHub**:
-  - [API-Wilayah-2024](https://github.com/roedyrustam/API-Wilayah-2024): Basis data & REST API wilayah administratif terlengkap di Indonesia (38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, 83.000+ Desa) dengan 21+ Stars dan 10 Forks.
+  - [API-Wilayah-2024](https://github.com/roedyrustam/API-Wilayah-2024): Basis data & REST API wilayah administratif terlengkap di Indonesia (38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, 83.000+ Desa) dengan 21+ Stars dan 10 Forks. Live Explorer interaktif: [roedyrustam.github.io/#govtech-explorer](https://roedyrustam.github.io/#govtech-explorer).
   - [132+ Repositori GitHub](https://github.com/roedyrustam): Implementasi arsitektur microservices TypeScript, Node.js, PHP, Python, dan Rust.
 
 ### 2. Praktisi AI & Multi-Agent Swarms (Indonesia)
