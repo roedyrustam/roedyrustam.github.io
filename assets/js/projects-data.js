@@ -9,25 +9,69 @@ const PROJECTS_DATA = [
   {
     id: "vibes-plug",
     title: "vibes-plug",
-    tagline: "70+ AI Developer Skills & Multi-Agent Swarm for Claude Code, Antigravity & Cursor",
+    tagline: "155 Specialized AI Developer Skills & Multi-Agent Swarm for Claude Code, Antigravity & Cursor",
     category: "ai",
     categoryLabel: "AI & MCP Agents",
     featured: true,
-    stars: 45,
-    forks: 8,
-    language: "Python / TS",
-    tags: ["AI Agents", "MCP", "Claude Code", "Antigravity", "Swarm", "Prompt Engineering"],
-    description: "Mega plugin dan koleksi 70+ skill developer AI otonom untuk Google Antigravity, Claude Code, dan Cursor. Mendukung multi-agent swarms, security hardening, fullstack scaffolding, dan integrasi Model Context Protocol.",
+    stars: 77,
+    forks: 19,
+    language: "JavaScript / Python",
+    tags: ["AI Agents", "MCP", "Claude Code", "Antigravity", "Swarm", "Prompt Engineering", "155 Skills"],
+    description: "Mega plugin dan koleksi 155 skill developer AI otonom untuk Google Antigravity, Claude Code, dan Cursor. Mendukung multi-agent swarms, security hardening, fullstack scaffolding, zero-to-prod pipeline, dan integrasi Model Context Protocol.",
     github: "https://github.com/roedyrustam/vibes-plug",
     npm: "https://www.npmjs.com/package/vibes-plug",
     demo: "https://www.npmjs.com/package/vibes-plug",
-    badge: "🔥 Featured • 45+ Stars",
+    badge: "🔥 Flagship • 77+ Stars & 19 Forks",
     icon: "sparkles",
     highlights: [
-      "70+ Specialized AI engineering skills",
-      "Model Context Protocol (MCP) compatible",
-      "Multi-agent autonomous swarm coordination",
-      "Available on NPM & GitHub"
+      "155 Specialized AI engineering skills (Frontend, Backend, DevOps, AI)",
+      "Model Context Protocol (MCP) native compatibility",
+      "Multi-agent autonomous swarm coordination & shared memory graph",
+      "Active on NPM & GitHub (77+ Stars, 19 Forks)"
+    ]
+  },
+  {
+    id: "sinapsai",
+    title: "sinapsai",
+    tagline: "⚡ Blazing-fast In-process AI Gateway & Control Plane with Circuit Breaker & Failover",
+    category: "ai",
+    categoryLabel: "AI & MCP Agents",
+    featured: true,
+    stars: 4,
+    forks: 3,
+    language: "TypeScript",
+    tags: ["AI Gateway", "Control Plane", "Circuit Breaker", "Automatic Failover", "Node.js", "TypeScript"],
+    description: "In-process AI Gateway dan Control Plane berkecepatan tinggi dengan arsitektur Circuit Breaker, Automatic Failover multi-provider (Gemini, Claude, OpenAI), dan Unified LLM API untuk Node.js & TypeScript.",
+    github: "https://github.com/roedyrustam/sinapsai",
+    demo: null,
+    badge: "⚡ AI Gateway • 4 Stars",
+    icon: "cpu",
+    highlights: [
+      "In-process zero-latency proxying & protocol unification",
+      "Intelligent multi-model fallback & circuit breaker protection",
+      "Unified schema streaming across leading frontier LLMs"
+    ]
+  },
+  {
+    id: "centaury",
+    title: "centaury",
+    tagline: "Autonomous Fullstack Engine for Super-Intelligent Systems (Gemini 4 Pro & Project Astra)",
+    category: "ai",
+    categoryLabel: "AI & MCP Agents",
+    featured: true,
+    stars: 1,
+    forks: 0,
+    language: "TypeScript",
+    tags: ["Fullstack Engine", "Gemini 4 Pro", "Project Astra", "MCP v1.x", "Ephemeral UI"],
+    description: "Mesin fullstack otonom untuk sistem AI cerdas generasi berikutnya. Mendukung Google Gemini 4 Pro, Project Astra, Dual-Citizen MCP v1.x, Zero-Hydration Signals, dan Ephemeral Generative UI.",
+    github: "https://github.com/roedyrustam/centaury",
+    demo: null,
+    badge: "Autonomous Engine",
+    icon: "sparkles",
+    highlights: [
+      "Native Gemini 4 Pro & Astra multimodal integration",
+      "Dual-Citizen MCP v1.x client & server runtime",
+      "Zero-Hydration Signals architecture for ultra-fast rendering"
     ]
   },
   {
@@ -220,14 +264,14 @@ const PROJECTS_DATA = [
     category: "govtech",
     categoryLabel: "GovTech & Open Data",
     featured: true,
-    stars: 20,
+    stars: 21,
     forks: 10,
     language: "PHP / SQL / JSON",
     tags: ["Open Data", "Indonesia", "REST API", "Provinsi", "Kabupaten", "Kecamatan", "Desa"],
     description: "Dataset komprehensif dan REST API data wilayah administratif Indonesia terlengkap (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) dengan skema relasional teroptimasi untuk integrasi aplikasi nasional.",
     github: "https://github.com/roedyrustam/API-Wilayah-2024",
     demo: null,
-    badge: "⭐ 20 Stars • 10 Forks",
+    badge: "⭐ 21 Stars • 10 Forks",
     icon: "map-pin",
     highlights: [
       "Lengkap 38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, 83.000+ Desa",
@@ -407,11 +451,12 @@ const PROJECTS_DATA = [
 // Technical Skill Matrix
 const SKILLS_DATA = {
   "AI & MCP Engineering": [
-    { name: "Model Context Protocol (MCP)", level: 95, icon: "cpu" },
-    { name: "Multi-Agent Swarm Orchestration", level: 92, icon: "git-merge" },
-    { name: "Google Antigravity SDK & Plugins", level: 96, icon: "zap" },
-    { name: "Claude Code & Agentic Workflows", level: 94, icon: "terminal" },
-    { name: "Prompt Engineering & RAG Architectures", level: 90, icon: "database" }
+    { name: "Model Context Protocol (MCP v1.x)", level: 97, icon: "cpu" },
+    { name: "Multi-Agent Swarm Orchestration (155 Skills)", level: 96, icon: "git-merge" },
+    { name: "In-Process AI Gateway & Circuit Breakers (sinapsai)", level: 94, icon: "zap" },
+    { name: "Google Antigravity SDK & Claude Code", level: 96, icon: "terminal" },
+    { name: "Autonomous Fullstack Engines (centaury)", level: 92, icon: "sparkles" },
+    { name: "Prompt Engineering & RAG Architectures", level: 92, icon: "database" }
   ],
   "Specialty Coffee Tech": [
     { name: "SCA 2025 CVA Evaluation Standard", level: 98, icon: "coffee" },

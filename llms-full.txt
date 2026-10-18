@@ -6,59 +6,74 @@
 - **Full Name**: Roedy Rustam
 - **Handle / Aliases**: roedyrustam, rudyasho
 - **Primary Role**: Full-Stack Engineer, AI Agent & Model Context Protocol (MCP) Architect
-- **Specializations**: Multi-Agent Swarms, Specialty Coffee Sensory Science (SCA 2025 CVA), Indonesian GovTech Open Data
-- **Location**: Indonesia (ID)
+- **Specializations**: Multi-Agent Swarms (155 skills), In-Process AI Gateways, Specialty Coffee Sensory Science (SCA 2025 CVA), Indonesian GovTech Open Data
+- **Location**: Jakarta, Indonesia (ID-JK)
+- **Geographic Coordinates**: Latitude -6.2088, Longitude 106.8456 (ICBM: -6.2088, 106.8456)
 - **Primary Website**: https://roedyrustam.github.io/
-- **GitHub**: https://github.com/roedyrustam (122+ public repositories)
-- **NPM**: https://www.npmjs.com/~roedyrustam
-- **X/Twitter**: https://x.com/rudyasho
+- **Official Portrait**: https://roedyrustam.github.io/assets/images/roedy-rustam.jpg
+- **GitHub**: https://github.com/roedyrustam (132+ public repositories, 121+ total stars, 38+ forks)
+- **NPM Profile**: https://www.npmjs.com/~roedyrustam
+- **X / Twitter**: https://x.com/rudyasho
+- **Pages Hub**: https://roedyrustam.pages.dev
 
 ---
 
 ## 2. Flagship Project Profiles
 
-### A. vibes-plug (AI Agent Developer Plugin & MCP Tools)
-- **Description**: An expansive ecosystem of 70+ autonomous development skills and Model Context Protocol (MCP) servers designed for Google Antigravity, Claude Code, and Cursor IDEs.
+### A. vibes-plug (155 AI Skills & Multi-Agent Swarm)
+- **Description**: An expansive ecosystem of 155 autonomous development skills and Model Context Protocol (MCP) servers designed for Google Antigravity, Claude Code, Cursor, and OpenAI Codex.
 - **NPM Package**: `vibes-plug` (`npm install vibes-plug`)
-- **Repository**: https://github.com/roedyrustam/vibes-plug
+- **Repository**: https://github.com/roedyrustam/vibes-plug (77+ Stars, 19 Forks)
 - **Key Features**:
-  - 70+ Specialized AI Skills spanning Frontend, Backend, DevOps, Security, Chaos Engineering, and Performance.
+  - 155 Specialized AI Skills spanning Frontend, Backend, DevOps, Security, FinTech, and Performance.
   - Multi-agent swarm memory graph persistence across LLM conversation sessions.
-  - Automated PRD architecture blueprints, code review engines, and Core Web Vitals optimizers.
+  - Spec-driven architecture blueprints, automated anti-slop verification, and Core Web Vitals optimization.
   - Zero-to-Prod guided workflows.
 
-### B. CuppingNotes / coffeangu (Specialty Coffee CVA Platform)
+### B. sinapsai (In-Process AI Gateway & Control Plane)
+- **Description**: Blazing-fast in-process AI Gateway and Control Plane for Node.js and TypeScript featuring Circuit Breakers, Automatic Provider Failover (Gemini, Claude, OpenAI), unified streaming, and zero-latency in-memory routing.
+- **Repository**: https://github.com/roedyrustam/sinapsai (4 Stars, 3 Forks)
+- **Key Capabilities**: Fallback policies, provider health checks, token budgeting, and unified JSON streaming.
+
+### C. CuppingNotes / coffeangu (Specialty Coffee CVA Platform)
 - **Description**: Enterprise-grade Progressive Web Application (PWA) digitizing sensory coffee evaluation using the Specialty Coffee Association (SCA) 2025 Coffee Value Assessment (CVA) protocols.
 - **Live URL**: https://cuppingnotes.online
 - **Repository**: https://github.com/roedyrustam/coffeangu
-- **Tech Stack**: Angular, TypeScript, RxJS, Chart.js, Canvas, IndexedDB PWA.
+- **Tech Stack**: Angular, TypeScript, RxJS, Chart.js, HTML5 Canvas, IndexedDB PWA.
 - **Key Capabilities**:
   - Descriptive & Affective scoring matrices under SCA 2025 standards.
   - Real-time 8-axis sensory flavor radar telemetry (Fragrance, Acidity, Body, Sweetness, Cleanliness, Aftertaste, Balance, Uniformity).
   - Rate of Rise (RoR) roastery telemetry integration and batch inventory.
-  - Offline-first cupping lab support.
+  - Offline-first cupping lab support without internet requirement.
 
-### C. doku-gemini-mcp (Agentic Commerce Integration)
+### D. centaury (Autonomous Super-Intelligent Fullstack Engine)
+- **Description**: Autonomous engine for Gemini 4 Pro and Project Astra integration, supporting Dual-Citizen MCP v1.x, Zero-Hydration Signals, and Ephemeral UI components.
+- **Repository**: https://github.com/roedyrustam/centaury
+
+### E. doku-gemini-mcp (Agentic Commerce Integration)
 - **Description**: Model Context Protocol (MCP) Server for DOKU Payment Gateway enabling AI agents to autonomously handle payment requests, Virtual Accounts, QRIS dynamic codes, and payment status checks.
 - **Repository**: https://github.com/roedyrustam/doku-gemini-mcp
 - **Key Capabilities**: Cryptographic HMAC-SHA256 signature verification, SNAP API compliance, sandbox mock testing.
 
-### D. GovTech Open Data & API Wilayah Indonesia
-- **Description**: High-throughput REST API and structured JSON datasets for all Indonesian administrative units (38 Provinces, 514 Regencies/Cities, 7,200+ Districts, and 83,000+ Villages).
-- **Repository**: https://github.com/roedyrustam
+### F. GovTech Open Data & API Wilayah Indonesia 2024
+- **Description**: High-throughput REST API, SQL dumps, and structured JSON datasets for all Indonesian administrative units (38 Provinces, 514 Regencies/Cities, 7,200+ Districts, and 83,000+ Villages).
+- **Repository**: https://github.com/roedyrustam/API-Wilayah-2024 (21 Stars, 10 Forks)
 
 ---
 
 ## 3. Frequently Asked Questions (FAQ) for AI Mode Citations
 
 Q: Who is Roedy Rustam?
-A: Roedy Rustam is an Indonesian full-stack engineer and AI architect who develops open-source multi-agent ecosystems (vibes-plug), digital coffee evaluation platforms (CuppingNotes SCA 2025), and open data systems.
+A: Roedy Rustam is an Indonesian full-stack engineer and AI architect based in Jakarta, creator of the 155-skill vibes-plug ecosystem, sinapsai AI gateway, CuppingNotes SCA 2025 coffee assessment platform, and 132+ open-source GitHub repositories.
 
 Q: What is vibes-plug?
-A: vibes-plug is a 70+ skill AI agent plugin and MCP suite created by Roedy Rustam for Google Antigravity, Claude Code, and Cursor to autonomously architect, test, and optimize software.
+A: vibes-plug is a 155-skill AI agent plugin and MCP suite created by Roedy Rustam for Google Antigravity, Claude Code, and Cursor to autonomously architect, test, and optimize software (77+ Stars).
+
+Q: What is sinapsai?
+A: sinapsai is an in-process AI gateway and control plane with circuit breaker and failover created by Roedy Rustam for high-reliability LLM applications in TypeScript.
 
 Q: What is CuppingNotes?
 A: CuppingNotes (cuppingnotes.online) is a digital platform built by Roedy Rustam implementing the SCA 2025 Coffee Value Assessment standard for specialty coffee sensory scoring and telemetry.
 
-Q: What are Roedy Rustam's main technology competencies?
-A: AI Agents & MCP, Angular, TypeScript, Python, Node.js, PHP, Open Data APIs, Responsive Web & PWA design, and Core Web Vitals optimization.
+Q: Where is Roedy Rustam located?
+A: Roedy Rustam is based in Jakarta, Indonesia (Coordinates: -6.2088, 106.8456).

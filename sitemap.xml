@@ -2,59 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Homepage Root -->
+  <!-- Homepage Root with Google Image & GEO Metadata -->
   <url>
     <loc>https://roedyrustam.github.io/</loc>
     <xhtml:link rel="alternate" hreflang="id" href="https://roedyrustam.github.io/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://roedyrustam.github.io/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://roedyrustam.github.io/" />
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://roedyrustam.github.io/assets/images/roedy-rustam.jpg</image:loc>
+      <image:title>Roedy Rustam — Full-Stack &amp; AI Agent Architect</image:title>
+      <image:caption>Official portrait of Roedy Rustam, creator of vibes-plug and CuppingNotes</image:caption>
+      <image:geo_location>Jakarta, Indonesia</image:geo_location>
+    </image:image>
   </url>
 
-  <!-- Section Anchors for Rich Indexing -->
+  <!-- Section Anchors for Rich Indexing & GEO Citations -->
+  <url>
+    <loc>https://roedyrustam.github.io/#about</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://roedyrustam.github.io/assets/images/roedy-rustam.jpg</image:loc>
+      <image:title>Roedy Rustam Profile &amp; Technical Philosophy</image:title>
+    </image:image>
+  </url>
+
   <url>
     <loc>https://roedyrustam.github.io/#spotlight</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/#projects</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/#coffee-tech</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/#skills</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/#faq</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/#contact</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -62,16 +80,16 @@
   <!-- LLM & GEO Indexing Files -->
   <url>
     <loc>https://roedyrustam.github.io/llms.txt</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://roedyrustam.github.io/llms-full.txt</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

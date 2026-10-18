@@ -38,6 +38,15 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
 # Sitemap & LLM Knowledge Index
 Sitemap: https://roedyrustam.github.io/sitemap.xml
 llms-txt: https://roedyrustam.github.io/llms.txt

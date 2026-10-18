@@ -13,25 +13,52 @@
   const COMMANDS = {
     help: `
 <span class="cmd-cyan">AVAILABLE COMMANDS:</span>
-  <span class="cmd-green">about</span>       - Bio, summary & vision
-  <span class="cmd-green">skills</span>      - Technical stack & competency matrix
+  <span class="cmd-green">about</span>       - Bio, verified profile & architect manifesto
+  <span class="cmd-green">photo</span>       - View official portrait photo & verified card
+  <span class="cmd-green">skills</span>      - Technical stack & competency matrix (155 skills)
   <span class="cmd-green">projects</span>    - Featured digital products & creations
-  <span class="cmd-green">vibes</span>       - AI agent & MCP ecosystem (vibes-plug)
+  <span class="cmd-green">vibes</span>       - AI agent & MCP ecosystem (vibes-plug, 77+ ⭐)
   <span class="cmd-green">coffee</span>      - CuppingNotes & SCA 2025 Coffee Tech
-  <span class="cmd-green">govtech</span>     - API Wilayah 2024 & GIS systems
-  <span class="cmd-green">repos</span>       - Real-time GitHub statistics
+  <span class="cmd-green">govtech</span>     - API Wilayah 2024 (21 ⭐) & GIS systems
+  <span class="cmd-green">repos</span>       - Real-time GitHub statistics (132+ repos, 121+ ⭐)
   <span class="cmd-green">faq</span>         - Generative AI & general FAQ
   <span class="cmd-green">contact</span>     - Social profiles & connection links
   <span class="cmd-green">matrix</span>      - Cyberpunk matrix animation stream
   <span class="cmd-green">clear</span>       - Clear terminal window
     `,
 
+    photo: `
+<span class="cmd-cyan">📸 ROEDY RUSTAM OFFICIAL PORTRAIT:</span>
+  Full portrait loaded at: <a href="assets/images/roedy-rustam.jpg" target="_blank" class="term-link">assets/images/roedy-rustam.jpg</a>
+  Identity : <span class="cmd-green">Roedy Rustam</span> (Verified Open Source Architect)
+  Location : <span class="cmd-yellow">Jakarta, Indonesia</span> (GEO: -6.2088, 106.8456)
+  Role     : Full-Stack & AI Agent Architect
+  Status   : <span class="cmd-green">● Available for Advisory & AI Architecture</span>
+  Scroll down to <a href="#about" class="term-link">#about</a> section to view full executive card.
+    `,
+
+    profile: `
+<span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="cmd-bold cmd-cyan">Roedy Rustam</span> | Full-Stack & AI Agent Architect
+<span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+📍 Location : Jakarta, Indonesia (UTC+7)
+🚀 Focus    : Autonomous AI Agents, In-process Gateways (sinapsai),
+              Specialty Coffee Tech (CuppingNotes SCA 2025 CVA), & GovTech Open Data.
+📦 Repos    : 132+ Public Repositories on GitHub
+⭐ Stars    : 121+ GitHub Stars (38+ Forks)
+🌟 Flagship : vibes-plug (77+ Stars, 19 Forks, 155 Skills)
+☕ Passion  : Specialty Coffee Science, Roasting Telemetry & Sensory Evaluation
+🔗 Web      : <a href="https://roedyrustam.github.io/" target="_blank" class="term-link">https://roedyrustam.github.io/</a>
+    `,
+
     faq: `
 <span class="cmd-cyan">💡 FREQUENTLY ASKED QUESTIONS (AI KNOWLEDGE BASE)</span>
   • <span class="cmd-yellow">Who is Roedy Rustam?</span>
-    Indonesian Full-Stack Engineer & AI Agent Architect (122+ GitHub repos).
+    Indonesian Full-Stack Engineer & AI Agent Architect with 132+ GitHub repos and 121+ stars based in Jakarta.
   • <span class="cmd-yellow">What is vibes-plug?</span>
-    Unified 70+ skill AI plugin & MCP suite (<span class="cmd-green">npm i vibes-plug</span>).
+    Unified 155-skill AI plugin & MCP suite with 77+ stars (<span class="cmd-green">npm i vibes-plug</span>).
+  • <span class="cmd-yellow">What is sinapsai?</span>
+    Blazing-fast in-process AI Gateway & Control Plane with Circuit Breaker and failover.
   • <span class="cmd-yellow">What is CuppingNotes?</span>
     SCA 2025 Coffee Value Assessment sensory scoring PWA (<a href="https://cuppingnotes.online" target="_blank" class="term-link">cuppingnotes.online</a>).
   • <span class="cmd-yellow">How to connect?</span>
@@ -42,45 +69,48 @@
 <span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
 <span class="cmd-bold cmd-cyan">Roedy Rustam</span> | Full-Stack & AI Agent Architect
 <span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-📍 Location : Indonesia
+📍 Location : Jakarta, Indonesia (UTC+7)
 🚀 Focus    : AI Agent Swarms, Model Context Protocol (MCP),
               Specialty Coffee Tech (SCA 2025 CVA), & GovTech Open Data.
-📦 Repos    : 122+ Public Repositories on GitHub
-🌟 Flagship : vibes-plug (45+ Stars on GitHub & NPM)
+📦 Repos    : 132+ Public Repositories on GitHub
+⭐ Stars    : 121+ Total Stars across Open Source works
+🌟 Flagship : vibes-plug (77+ Stars & 19 Forks on GitHub & NPM)
 ☕ Passion  : Specialty Coffee Science, Roasting Telemetry & Sensory Evaluation
-🔗 Web      : <a href="https://github.com/roedyrustam" target="_blank" class="term-link">https://github.com/roedyrustam</a>
+🔗 Web      : <a href="https://roedyrustam.github.io/" target="_blank" class="term-link">https://roedyrustam.github.io/</a>
     `,
 
     skills: `
-<span class="cmd-cyan">⚡ CORE SKILLS & CAPABILITIES:</span>
-  🤖 <span class="cmd-yellow">AI & MCP</span>        : Model Context Protocol, Multi-Agent Swarms, Antigravity SDK, Claude Code, Prompt Eng.
-  ☕ <span class="cmd-yellow">Coffee Tech</span>     : SCA 2025 CVA Standard, Sensory Radar, RoR Roasting Telemetry, Green Bean ERP.
-  💻 <span class="cmd-yellow">Frontend</span>        : TypeScript, Angular 19, Modern CSS / Tailwind v4, Astro, React, PWA.
+<span class="cmd-cyan">⚡ CORE SKILLS & CAPABILITIES (155 SKILLS ECOSYSTEM):</span>
+  🤖 <span class="cmd-yellow">AI & MCP</span>        : Model Context Protocol (MCP v1.x), Multi-Agent Swarms, sinapsai AI Gateway, Gemini 4 Pro / Astra, Claude Code.
+  ☕ <span class="cmd-yellow">Coffee Tech</span>     : SCA 2025 CVA Standard, Sensory Radar, RoR Roasting Telemetry, BeansHub ERP.
+  💻 <span class="cmd-yellow">Frontend</span>        : TypeScript, Angular 19, Modern CSS / Tailwind v4, Astro, React, Signals PWA.
   🛠️ <span class="cmd-yellow">Backend</span>         : Node.js, PHP/Laravel, Python FastAPI, Rust, REST APIs, Microservices.
-  🗺️ <span class="cmd-yellow">GovTech & Data</span>  : Indonesian Regional Open Data (API Wilayah), GIS Leaflet/GeoJSON, SQL Optimization.
+  🗺️ <span class="cmd-yellow">GovTech & Data</span>  : Indonesian Regional Open Data (API Wilayah 2024), GIS Leaflet/GeoJSON, SQL Optimization.
     `,
 
     projects: `
 <span class="cmd-cyan">🚀 NOTABLE DIGITAL CREATIONS:</span>
-  1. <span class="cmd-green">vibes-plug</span>       [AI/MCP]    - 70+ AI skills & agent swarms for Claude/Antigravity (45+ ⭐)
-  2. <span class="cmd-green">CuppingNotes</span>     [Coffee]    - SCA 2025 Coffee Value Assessment platform (<a href="https://cuppingnotes.online" target="_blank" class="term-link">cuppingnotes.online</a>)
-  3. <span class="cmd-green">API Wilayah 2024</span> [GovTech]   - Comprehensive Indonesian administrative REST API (20 ⭐)
-  4. <span class="cmd-green">doku-gemini-mcp</span>  [FinTech]   - DOKU payment MCP Server for AI agentic commerce
-  5. <span class="cmd-green">SIPD Panaikang</span>   [GIS]       - Interactive village land mapping & demographic portal
-  6. <span class="cmd-green">Kasir Simpel</span>     [SaaS/POS]  - Lightweight cloud POS for MSMEs (<a href="https://kasirsimpel.vercel.app" target="_blank" class="term-link">kasirsimpel.vercel.app</a>)
-  7. <span class="cmd-green">GravityCheck</span>     [Telemetry] - Futuristic Google Antigravity token monitor
+  1. <span class="cmd-green">vibes-plug</span>       [AI/MCP]    - 155 AI skills & agent swarms for Claude/Antigravity (77+ ⭐, 19 forks)
+  2. <span class="cmd-green">sinapsai</span>         [AI Gateway]- In-process AI Gateway with Circuit Breaker & Failover (4 ⭐)
+  3. <span class="cmd-green">API Wilayah 2024</span> [GovTech]   - Comprehensive Indonesian administrative REST API (21 ⭐, 10 forks)
+  4. <span class="cmd-green">CuppingNotes</span>     [Coffee]    - SCA 2025 Coffee Value Assessment platform (<a href="https://cuppingnotes.online" target="_blank" class="term-link">cuppingnotes.online</a>)
+  5. <span class="cmd-green">doku-gemini-mcp</span>  [FinTech]   - DOKU payment MCP Server for AI agentic commerce
+  6. <span class="cmd-green">centaury</span>         [Fullstack] - Autonomous engine for Gemini 4 Pro & Project Astra
+  7. <span class="cmd-green">BeansHub</span>         [Coffee ERP]- Specialty roastery green bean inventory & batch tracking (3 ⭐)
+  8. <span class="cmd-green">SIPD Panaikang</span>   [GIS]       - Interactive village land mapping & demographic portal
+  9. <span class="cmd-green">Kasir Simpel</span>     [SaaS/POS]  - Lightweight cloud POS for MSMEs (<a href="https://kasirsimpel.vercel.app" target="_blank" class="term-link">kasirsimpel.vercel.app</a>)
 
 Type <span class="cmd-yellow">vibes</span>, <span class="cmd-yellow">coffee</span>, or <span class="cmd-yellow">govtech</span> for deep dives!
     `,
 
     vibes: `
 <span class="cmd-purple">🤖 VIBES-PLUG & AI AGENT ECOSYSTEM</span>
-An advanced AI developer toolkit empowering coding assistants with 70+ autonomous skills.
-  • Multi-Agent swarm orchestration with memory graph
-  • Automated zero-to-prod deployment pipeline
-  • Model Context Protocol (MCP) server integration
+An advanced AI developer toolkit empowering coding assistants with 155 autonomous skills.
+  • Multi-Agent swarm orchestration with shared memory graph
+  • In-process AI routing, automated PRD architecture & security hardening
+  • Model Context Protocol (MCP v1.x) server & client integration
   • Available via NPM: <span class="cmd-yellow">npm install vibes-plug</span>
-  • GitHub: <a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">github.com/roedyrustam/vibes-plug</a> (45+ Stars)
+  • GitHub: <a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">github.com/roedyrustam/vibes-plug</a> (77+ Stars, 19 Forks)
     `,
 
     coffee: `
@@ -95,7 +125,7 @@ Live platform: <a href="https://cuppingnotes.online" target="_blank" class="term
     govtech: `
 <span class="cmd-cyan">🏛️ GOVTECH & INDONESIAN OPEN DATA</span>
 High-impact public sector digital transformations:
-  • <span class="cmd-bold">API-Wilayah-2024</span>: 38 Provinces, 514 Cities/Regencies, 7,200+ Districts, 83,000+ Villages (20 Stars).
+  • <span class="cmd-bold">API-Wilayah-2024</span>: 38 Provinces, 514 Cities/Regencies, 7,200+ Districts, 83,000+ Villages (21 Stars, 10 Forks).
   • <span class="cmd-bold">Peta Desa Panaikang</span>: WebGIS land ownership & demographic intelligence portal.
   • <span class="cmd-bold">Pandu Talenta</span>: Village governance starter kit & youth ecosystem.
     `,
@@ -103,7 +133,9 @@ High-impact public sector digital transformations:
     repos: `
 <span class="cmd-cyan">📊 GITHUB PROFILE SUMMARY</span>
   • Username       : roedyrustam
-  • Public Repos   : 122+
+  • Public Repos   : 132+
+  • Total Stars    : 121+
+  • Total Forks    : 38+
   • Primary Focus  : AI Agents, TypeScript, Python, PHP, Angular, Rust
   • Live Repos URL : <a href="https://github.com/roedyrustam?tab=repositories" target="_blank" class="term-link">https://github.com/roedyrustam?tab=repositories</a>
     `,
