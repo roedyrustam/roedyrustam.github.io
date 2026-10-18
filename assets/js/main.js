@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuickCopy();
   initScrollAnimations();
   initFAQAccordion();
+  initWhatsAppBooking();
 });
 
 /* ==========================================================================
@@ -640,5 +641,96 @@ function initFAQAccordion() {
       btn.setAttribute('aria-expanded', String(!isActive));
     });
   });
+}
+
+/* ==========================================================================
+   12. WhatsApp Fast-Track Booking System (P1)
+   ========================================================================== */
+function initWhatsAppBooking() {
+  const phone = document.body.dataset.waPhone || '6281200000000';
+  
+  const TEMPLATES = {
+    it: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai arsitektur sistem IT dan audit performa untuk perusahaan kami.",
+    ai: "Halo Pak Roedy Rustam, kami tertarik mengundang Anda sebagai Trainer Workshop AI / konsultasi implementasi AI Agents untuk tim kami.",
+    umkm: "Halo Pak Roedy Rustam, saya pelaku usaha UMKM ingin berkonsultasi mengenai sistem kasir cloud POS, inventaris, dan digitalisasi operasional.",
+    general: "Halo Pak Roedy Rustam, saya ingin mendiskusikan peluang kolaborasi teknologi."
+  };
+
+  function openWhatsApp(text) {
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    const encoded = encodeURIComponent(text || TEMPLATES.general);
+    const url = `https://wa.me/${cleanPhone}?text=${encoded}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    showToast("Membuka WhatsApp...");
+  }
+
+  // 1. In-page Contact Section template cards
+  const contactCards = document.querySelectorAll('.contact-wa-grid .wa-template-card');
+  contactCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const templateKey = card.getAttribute('data-template') || 'it';
+      const msg = TEMPLATES[templateKey] || TEMPLATES.general;
+      openWhatsApp(msg);
+    });
+  });
+
+  // 2. Floating Action Button & Popover
+  const fabBtn = document.getElementById('wa-floating-btn');
+  const popover = document.getElementById('wa-popover-card');
+  const closeBtn = document.getElementById('wa-popover-close');
+  const customInput = document.getElementById('wa-custom-input');
+  const sendBtn = document.getElementById('wa-custom-send');
+
+  if (fabBtn && popover) {
+    fabBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popover.classList.toggle('show');
+      if (popover.classList.contains('show')) {
+        customInput?.focus();
+      }
+    });
+
+    closeBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popover.classList.remove('show');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (popover.classList.contains('show') && !popover.contains(e.target) && !fabBtn.contains(e.target)) {
+        popover.classList.remove('show');
+      }
+    });
+
+    // Popover template items
+    const popoverItems = popover.querySelectorAll('.wa-popover-item');
+    popoverItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const templateKey = item.getAttribute('data-template') || 'it';
+        const msg = TEMPLATES[templateKey] || TEMPLATES.general;
+        openWhatsApp(msg);
+        popover.classList.remove('show');
+      });
+    });
+
+    // Custom input send
+    function handleCustomSend() {
+      const text = customInput?.value.trim();
+      const msg = text || TEMPLATES.general;
+      openWhatsApp(msg);
+      if (customInput) customInput.value = '';
+      popover.classList.remove('show');
+    }
+
+    sendBtn?.addEventListener('click', handleCustomSend);
+    customInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleCustomSend();
+      }
+    });
+  }
 }
 
