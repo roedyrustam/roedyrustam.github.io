@@ -15,18 +15,18 @@
 <span class="cmd-cyan">AVAILABLE COMMANDS:</span>
   <span class="cmd-green">about</span>       - Bio, verified profile & architect manifesto
   <span class="cmd-green">photo</span>       - View official portrait photo & verified card
-  <span class="cmd-green">services</span>    - Consulting & Training portfolio (IT, AI, UMKM, Trainer)
+  <span class="cmd-green">services</span>    - Consulting & Training portfolio (UMKM, AI, IT, Trainer)
+  <span class="cmd-green">umkm</span>        - Konsultan UMKM & Digitalisasi Ritel POS
+  <span class="cmd-green">ai</span>          - AI Engineer & Multi-Agent Swarms (vibes-plug & sinapsai)
   <span class="cmd-green">konsultan</span>   - Konsultan IT & Enterprise Architecture proof
-  <span class="cmd-green">ai</span>          - Praktisi AI & Multi-Agent Swarms (vibes-plug & sinapsai)
-  <span class="cmd-green">umkm</span>        - Konsultan Digitalisasi UMKM & Retail POS
   <span class="cmd-green">trainer</span>     - Trainer IT & Corporate AI Workshops
   <span class="cmd-green">wa</span>          - Fast-track direct WhatsApp chat with 3 templates
-  <span class="cmd-green">skills</span>      - Technical stack & competency matrix (155 skills)
+  <span class="cmd-green">skills</span>      - Technical stack & competency matrix (161 skills)
   <span class="cmd-green">projects</span>    - Featured digital products & creations
-  <span class="cmd-green">vibes</span>       - AI agent & MCP ecosystem (vibes-plug, 77+ ⭐)
+  <span class="cmd-green">vibes</span>       - AI agent & MCP ecosystem (vibes-plug, 109+ ⭐, 25 forks)
   <span class="cmd-green">coffee</span>      - CuppingNotes & SCA 2025 Coffee Tech
   <span class="cmd-green">govtech</span>     - API Wilayah 2024 (21 ⭐) & GIS systems
-  <span class="cmd-green">repos</span>       - Real-time GitHub statistics (132+ repos, 121+ ⭐)
+  <span class="cmd-green">repos</span>       - Real-time GitHub statistics (123+ repos, 154+ ⭐)
   <span class="cmd-green">faq</span>         - Generative AI & general FAQ
   <span class="cmd-green">contact</span>     - Social profiles & connection links
   <span class="cmd-green">matrix</span>      - Cyberpunk matrix animation stream
@@ -37,12 +37,12 @@
 <span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
 <span class="cmd-bold cmd-cyan">LAYANAN KONSULTASI & PELATIHAN RESMI — ROEDY RUSTAM</span>
 <span class="cmd-purple">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
-Solusi terukur dan terbukti melalui 132+ repositori GitHub:
-  1. <span class="cmd-green">Konsultan IT</span>        : Enterprise architecture, Core Web Vitals 100/100, API Wilayah.
-  2. <span class="cmd-green">Praktisi AI</span>         : vibes-plug (155 skills), sinapsai gateway, MCP v1.x.
-  3. <span class="cmd-green">Konsultan UMKM</span>      : Kasir Simpel POS, BeansHub ERP, CuppingNotes SCA.
+Solusi terukur dan terbukti melalui 123+ repositori GitHub:
+  1. <span class="cmd-green">Konsultan UMKM</span>      : Kasir Simpel POS, BeansHub ERP, CuppingNotes SCA.
+  2. <span class="cmd-green">AI Engineer</span>         : vibes-plug (161 skills), sinapsai gateway, MCP v1.x.
+  3. <span class="cmd-green">Konsultan IT</span>        : Enterprise architecture, Core Web Vitals 100/100, API Wilayah.
   4. <span class="cmd-green">Trainer IT</span>          : Corporate workshop AI agent, prompt engineering, anti-slop.
-Type <span class="cmd-yellow">'konsultan'</span>, <span class="cmd-yellow">'ai'</span>, <span class="cmd-yellow">'umkm'</span>, atau <span class="cmd-yellow">'trainer'</span> untuk rincian bukti karya!
+Type <span class="cmd-yellow">'umkm'</span>, <span class="cmd-yellow">'ai'</span>, <span class="cmd-yellow">'konsultan'</span>, atau <span class="cmd-yellow">'trainer'</span> untuk rincian bukti karya!
     `,
 
     layanan: `
@@ -54,15 +54,15 @@ Type <span class="cmd-yellow">'services'</span> to see all consulting offerings.
 <span class="cmd-cyan">🏛️ KONSULTAN IT & ENTERPRISE ARCHITECTURE (INDONESIA)</span>
 Advisory arsitektur sistem skala tinggi, optimasi performa & open data:
   • <span class="cmd-yellow">Bukti Empiris</span> : Pencipta <a href="https://github.com/roedyrustam/API-Wilayah-2024" target="_blank" class="term-link">API-Wilayah-2024</a> (38 Provinsi, 514 Kab/Kota, 83.000+ Desa, 21⭐, 10 forks).
-  • <span class="cmd-yellow">Portofolio</span>    : 132+ repositori publik (TypeScript, Node.js, PHP, Python, Rust).
+  • <span class="cmd-yellow">Portofolio</span>    : 123+ repositori publik (TypeScript, Node.js, PHP, Python, Rust, Go).
   • <span class="cmd-yellow">Layanan</span>       : Audit arsitektur sistem, Core Web Vitals 100/100, database tuning SQL/PostGIS, dan migrasi zero-downtime.
 Hubungi untuk konsultasi: <a href="#contact" class="term-link">#contact</a>
     `,
 
     ai: `
-<span class="cmd-purple">🤖 PRAKTISI AI & MULTI-AGENT SWARMS (INDONESIA)</span>
+<span class="cmd-purple">🤖 AI ENGINEER & MULTI-AGENT SWARMS (INDONESIA)</span>
 Implementasi sistem AI agentic otonom dan in-process gateway:
-  • <span class="cmd-yellow">vibes-plug</span>    : 155 specialized AI skills & MCP tools (<a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">github.com/roedyrustam/vibes-plug</a>, 77⭐).
+  • <span class="cmd-yellow">vibes-plug</span>    : 161 specialized AI skills & MCP tools (<a href="https://github.com/roedyrustam/vibes-plug" target="_blank" class="term-link">github.com/roedyrustam/vibes-plug</a>, 109⭐, 25 forks).
   • <span class="cmd-yellow">sinapsai</span>      : In-process AI Gateway dengan Circuit Breaker & Failover (<a href="https://github.com/roedyrustam/sinapsai" target="_blank" class="term-link">github.com/roedyrustam/sinapsai</a>).
   • <span class="cmd-yellow">doku-gemini</span>   : Agentic commerce via DOKU Payment Gateway Model Context Protocol.
   • <span class="cmd-yellow">Layanan</span>       : Multi-agent swarm design, custom MCP servers, hybrid reasoning LLM, prompt injection firewall.

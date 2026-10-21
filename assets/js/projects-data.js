@@ -9,25 +9,69 @@ const PROJECTS_DATA = [
   {
     id: "vibes-plug",
     title: "vibes-plug",
-    tagline: "155 Specialized AI Developer Skills & Multi-Agent Swarm for Claude Code, Antigravity & Cursor",
+    tagline: "161 Specialized AI Developer Skills & Multi-Agent Swarm for Claude Code, Antigravity & Cursor",
     category: "ai",
     categoryLabel: "AI & MCP Agents",
     featured: true,
-    stars: 77,
-    forks: 19,
+    stars: 109,
+    forks: 25,
     language: "JavaScript / Python",
-    tags: ["AI Agents", "MCP", "Claude Code", "Antigravity", "Swarm", "Prompt Engineering", "155 Skills"],
-    description: "Mega plugin dan koleksi 155 skill developer AI otonom untuk Google Antigravity, Claude Code, dan Cursor. Mendukung multi-agent swarms, security hardening, fullstack scaffolding, zero-to-prod pipeline, dan integrasi Model Context Protocol.",
+    tags: ["AI Agents", "MCP", "Claude Code", "Antigravity", "Swarm", "Prompt Engineering", "161 Skills"],
+    description: "Mega plugin dan koleksi 161 skill developer AI otonom untuk Google Antigravity, Claude Code, dan Cursor. Mendukung multi-agent swarms, security hardening, fullstack scaffolding, zero-to-prod pipeline, dan integrasi Model Context Protocol.",
     github: "https://github.com/roedyrustam/vibes-plug",
     npm: "https://www.npmjs.com/package/vibes-plug",
     demo: "https://www.npmjs.com/package/vibes-plug",
-    badge: "🔥 Flagship • 77+ Stars & 19 Forks",
+    badge: "🔥 Flagship • 109+ Stars & 25 Forks",
     icon: "sparkles",
     highlights: [
-      "155 Specialized AI engineering skills (Frontend, Backend, DevOps, AI)",
+      "161 Specialized AI engineering skills (Frontend, Backend, DevOps, AI)",
       "Model Context Protocol (MCP) native compatibility",
       "Multi-agent autonomous swarm coordination & shared memory graph",
-      "Active on NPM & GitHub (77+ Stars, 19 Forks)"
+      "Active on NPM & GitHub (109+ Stars, 25 Forks)"
+    ]
+  },
+  {
+    id: "hydradb",
+    title: "HydraDB",
+    tagline: "Fast Embedded Graph Database Optimized for AI Agents & Knowledge Graphs Built in Rust",
+    category: "ai",
+    categoryLabel: "AI & MCP Agents",
+    featured: true,
+    stars: 1,
+    forks: 0,
+    language: "Rust",
+    tags: ["Rust", "Graph Database", "AI Agents", "Knowledge Graph", "Fast"],
+    description: "Database graf berkecepatan tinggi yang dibangun dengan Rust, dirancang khusus untuk graf memori agen AI, traversal relasional instan, dan integrasi knowledge graph.",
+    github: "https://github.com/roedyrustam/hydradb",
+    demo: null,
+    badge: "Rust Graph DB",
+    icon: "database",
+    highlights: [
+      "Sub-millisecond graph query traversal",
+      "Native memory graph schema for autonomous swarms",
+      "Memory-safe zero-overhead Rust architecture"
+    ]
+  },
+  {
+    id: "hol-guard",
+    title: "hol-guard",
+    tagline: "Open-source Antivirus & Security Guard for Autonomous AI Agents",
+    category: "ai",
+    categoryLabel: "AI & MCP Agents",
+    featured: true,
+    stars: 1,
+    forks: 0,
+    language: "TypeScript / Node.js",
+    tags: ["AI Security", "Antivirus", "Prompt Firewall", "Autonomous Agents", "Zero Trust"],
+    description: "Sistem pertahanan dan antivirus open-source untuk agen AI otonom guna mencegah prompt injection, tool poisoning, malicious execution, dan data exfiltration secara real-time.",
+    github: "https://github.com/roedyrustam/hol-guard",
+    demo: null,
+    badge: "AI Security Guard",
+    icon: "shield",
+    highlights: [
+      "Real-time prompt injection firewall & canary tokens",
+      "Tool call argument sanitizer & sandbox enforcer",
+      "Defense-in-depth zero-trust agent security"
     ]
   },
   {
@@ -453,7 +497,7 @@ const PROJECTS_DATA = [
 const SKILLS_DATA = {
   "AI & MCP Engineering": [
     { name: "Model Context Protocol (MCP v1.x)", level: 97, icon: "cpu" },
-    { name: "Multi-Agent Swarm Orchestration (155 Skills)", level: 96, icon: "git-merge" },
+    { name: "Multi-Agent Swarm Orchestration (161 Skills)", level: 96, icon: "git-merge" },
     { name: "In-Process AI Gateway & Circuit Breakers (sinapsai)", level: 94, icon: "zap" },
     { name: "Google Antigravity SDK & Claude Code", level: 96, icon: "terminal" },
     { name: "Autonomous Fullstack Engines (centaury)", level: 92, icon: "sparkles" },

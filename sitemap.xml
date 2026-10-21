@@ -12,12 +12,12 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://roedyrustam.github.io/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://roedyrustam.github.io/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://roedyrustam.github.io/" />
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://roedyrustam.github.io/assets/images/roedy-rustam.jpg</image:loc>
-      <image:title>Roedy Rustam — Full-Stack &amp; AI Agent Architect</image:title>
+      <image:title>Roedy Rustam — Konsultan UMKM, AI Engineer &amp; Konsultan IT</image:title>
       <image:caption>Official portrait of Roedy Rustam, creator of vibes-plug and CuppingNotes</image:caption>
       <image:geo_location>Jakarta, Indonesia</image:geo_location>
     </image:image>
@@ -26,7 +26,7 @@
   <!-- Section Anchors for Rich Indexing & GEO Citations -->
   <url>
     <loc>https://roedyrustam.github.io/#about</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
@@ -37,12 +37,12 @@
 
   <url>
     <loc>https://roedyrustam.github.io/#services</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://roedyrustam.github.io/assets/images/roedy-rustam.jpg</image:loc>
-      <image:title>Roedy Rustam — Konsultan IT, Praktisi AI &amp; Konsultan UMKM Indonesia</image:title>
+      <image:title>Roedy Rustam — Konsultan UMKM, AI Engineer &amp; Konsultan IT Indonesia</image:title>
     </image:image>
   </url>
 

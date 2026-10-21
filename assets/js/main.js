@@ -92,16 +92,16 @@ async function initGitHubLiveStats() {
   const aboutStarsEl = document.getElementById('stat-about-stars');
 
   // Baseline verified numbers for Roedy Rustam
-  let totalRepos = 132;
-  let totalStars = 121;
-  let followers = 7;
+  let totalRepos = 123;
+  let totalStars = 154;
+  let followers = 8;
 
   try {
     const userRes = await fetch('https://api.github.com/users/roedyrustam');
     if (userRes.ok) {
       const userData = await userRes.json();
-      totalRepos = userData.public_repos || 132;
-      followers = userData.followers || 7;
+      totalRepos = userData.public_repos || 123;
+      followers = userData.followers || 8;
     }
 
     // Fetch up to 200 repositories across 2 pages in parallel to calculate exact stars
@@ -121,16 +121,16 @@ async function initGitHubLiveStats() {
     }
 
     if (aggregatedStars > 0) {
-      totalStars = Math.max(aggregatedStars, 121);
+      totalStars = Math.max(aggregatedStars, 154);
     }
     
     if (updatedEl) {
-      updatedEl.innerHTML = '<span class="status-dot online"></span> Live GitHub Sync Active (132+ Repos)';
+      updatedEl.innerHTML = `<span class="status-dot online"></span> Live GitHub Sync Active (${totalRepos} Repos • ${totalStars}⭐)`;
     }
   } catch (err) {
     console.warn('GitHub API rate limited or offline, using verified fallback dataset:', err);
     if (updatedEl) {
-      updatedEl.innerHTML = '<span class="status-dot cached"></span> Profile Cached & Verified (132+ Repos)';
+      updatedEl.innerHTML = '<span class="status-dot cached"></span> Profile Cached & Verified (123 Repos • 154⭐)';
     }
   }
 
