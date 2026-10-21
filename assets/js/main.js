@@ -6,9 +6,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initSoundFX();
   initNavigation();
+  initCommandPalette();
+  initPersonaLens();
   initGitHubLiveStats();
   initProjectsExplorer();
+  initSwarmVisualizer();
+  initUmkmCalculator();
   initSkillsMatrix();
   initCoffeeRadar();
   init3DTilt();
@@ -1050,4 +1055,690 @@ function initWilayahExplorer() {
   // Initial trigger with DKI Jakarta
   updateCascades("31", "31.71", "31.71.01", "31.71.01.1001");
 }
+
+/* ==========================================================================
+   13. Audio Feedback Synthesizer (Zero-Network Web Audio)
+   ========================================================================== */
+let audioCtx = null;
+let soundEnabled = localStorage.getItem('rr_sound') === 'on';
+
+function playUiSound(type = 'click') {
+  if (!soundEnabled) return;
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    if (type === 'click') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(400, now + 0.04);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      osc.start(now);
+      osc.stop(now + 0.04);
+    } else if (type === 'open') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } else if (type === 'toggle') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(900, now + 0.05);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    }
+  } catch (e) {
+    // Graceful fallback if Web Audio is unsupported
+  }
+}
+
+function initSoundFX() {
+  const soundBtn = document.getElementById('sound-toggle-btn');
+  const soundIcon = document.getElementById('sound-toggle-icon');
+
+  function updateIcon() {
+    if (soundIcon) {
+      soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
+    }
+    if (soundBtn) {
+      soundBtn.setAttribute('title', `Audio Feedback UI: ${soundEnabled ? 'Aktif' : 'Muted'} (Klik untuk ubah)`);
+    }
+  }
+
+  updateIcon();
+
+  soundBtn?.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    localStorage.setItem('rr_sound', soundEnabled ? 'on' : 'off');
+    updateIcon();
+    if (soundEnabled) {
+      playUiSound('open');
+      showToast('Audio Feedback UI: Aktif');
+    } else {
+      showToast('Audio Feedback UI: Muted');
+    }
+  });
+
+  // Attach subtle click feedback to interactive buttons
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('button, .nav-link, .term-pill, .filter-btn, .calc-option-btn, .persona-tab-btn, .swarm-node-item')) {
+      playUiSound('click');
+    }
+  }, { passive: true });
+}
+
+/* ==========================================================================
+   14. Dual Persona Lens Switcher (UMKM vs Tech Lead / CTO)
+   ========================================================================== */
+function initPersonaLens() {
+  const btnUmkm = document.getElementById('lens-btn-umkm');
+  const btnTech = document.getElementById('lens-btn-tech');
+  const descEl = document.getElementById('hero-description-text');
+  const pillsContainer = document.getElementById('persona-highlights-container');
+
+  if (!btnUmkm || !btnTech || !descEl || !pillsContainer) return;
+
+  const LENS_DATA = {
+    umkm: {
+      desc: 'Menyediakan transformasi digital bisnis UMKM tanpa biaya langganan mencekik: kasir cloud POS offline-first, manajemen stok pergudangan, integrasi otomatisasi WhatsApp CRM, serta konsultasi arsitektur enterprise terbukti melalui <strong>123+ repositori publik</strong> dan <strong>154+ GitHub stars</strong>.',
+      pills: [
+        'Point of Sale (POS) Cloud Ringan',
+        'Manajemen Stok & Roastery BeansHub',
+        'Bebas Biaya Langganan Bulanan',
+        'Integrasi Chat WhatsApp CRM'
+      ]
+    },
+    tech: {
+      desc: 'Menyediakan perancangan arsitektur enterprise modern, Model Context Protocol (MCP v1.x), sistem multi-agent otonom (<strong>161 AI skills vibes-plug</strong>), in-process AI gateway sinapsai berlatensi ultra-rendah, tuning database SQL/PostGIS, dan optimasi performa 100/100 Core Web Vitals.',
+      pills: [
+        '161 AI Engineering Skills (vibes-plug)',
+        'In-Process AI Gateway (sinapsai)',
+        'DOKU SNAP BI Payment MCP Server',
+        'Kemendagri API Wilayah 38 Provinsi'
+      ]
+    }
+  };
+
+  function setLens(lens) {
+    playUiSound('toggle');
+    if (lens === 'umkm') {
+      btnUmkm.classList.add('active');
+      btnUmkm.setAttribute('aria-selected', 'true');
+      btnTech.classList.remove('active');
+      btnTech.setAttribute('aria-selected', 'false');
+    } else {
+      btnTech.classList.add('active');
+      btnTech.setAttribute('aria-selected', 'true');
+      btnUmkm.classList.remove('active');
+      btnUmkm.setAttribute('aria-selected', 'false');
+    }
+
+    // Smooth fade transition
+    descEl.style.opacity = '0';
+    pillsContainer.style.opacity = '0';
+
+    setTimeout(() => {
+      const data = LENS_DATA[lens];
+      descEl.innerHTML = data.desc;
+      pillsContainer.innerHTML = data.pills.map(p => `
+        <span class="persona-pill"><span class="pill-dot"></span> ${p}</span>
+      `).join('');
+      descEl.style.opacity = '1';
+      pillsContainer.style.opacity = '1';
+    }, 150);
+  }
+
+  btnUmkm.addEventListener('click', () => setLens('umkm'));
+  btnTech.addEventListener('click', () => setLens('tech'));
+}
+
+/* ==========================================================================
+   15. Interactive Multi-Agent Swarm Topology Visualizer (v5.0)
+   ========================================================================== */
+function initSwarmVisualizer() {
+  const nodes = document.querySelectorAll('.swarm-node-item');
+  const inspector = document.getElementById('swarm-inspector');
+
+  if (!nodes.length || !inspector) return;
+
+  const SWARM_AGENTS = {
+    director: {
+      name: "Swarm Director & Orchestrator",
+      icon: "👑",
+      role: "Master Conductor / Pipeline Saga",
+      model: "Google Gemini 4 Pro / Claude 3.7 Extended",
+      status: "Orchestrating Active Swarm",
+      desc: "Mengintersepsi instruksi pengguna, mendekomposisi tugas lintas domain, dan mengorkestrasi 4 subagen spesialis secara paralel dengan shared memory graph.",
+      skills: ["brainstorming", "zero-to-prod-orchestrator", "multi-agent-orchestration", "context-window-engineer"],
+      packet: {
+        task_id: "SWARM-ORCH-8821",
+        topology: "FAN-OUT / FAN-IN",
+        active_subagents: 4,
+        shared_memory: "HydraDB Graph (Sub-ms traversal)",
+        latency: "142ms TTFT"
+      }
+    },
+    rag: {
+      name: "Knowledge Architect (RAG & Memory)",
+      icon: "🧠",
+      role: "Long-term Episodic Memory & Traversal",
+      model: "Google Gemini 4 Flash / HydraDB Rust Engine",
+      status: "In-Memory Graph Synced",
+      desc: "Menyediakan retrieval dokumen, traversal graf relasional sub-milidetik menggunakan database graf HydraDB, dan injeksi konteks minim token.",
+      skills: ["graph-rag-knowledge-expert", "agentic-memory-architect", "living-codebase-ast-graph"],
+      packet: {
+        engine: "HydraDB (Rust native)",
+        vector_index: "HNSW pgvector",
+        memory_nodes: 1248,
+        query_latency: "0.85ms",
+        cache_hit_rate: "94.6%"
+      }
+    },
+    fintech: {
+      name: "Payment Sentinel (FinTech & Commerce)",
+      icon: "💳",
+      role: "SNAP BI Direct API & Agentic Invoicing",
+      model: "Claude 3.7 Sonnet / Enterprise Guardrails",
+      status: "HMAC-SHA512 Verified",
+      desc: "Menangani payment gateway DOKU SNAP BI standar Bank Indonesia, QRIS dynamic micro-clearing, idempotensi atomik, dan checkout link otonom untuk agen AI.",
+      skills: ["doku-payment-gateway", "doku-mcp-server", "payment-gateway-expert", "agentic-m2m-settlement"],
+      packet: {
+        protocol: "SNAP BI 2026 Standard",
+        signature: "HMAC-SHA512 (Atomic Locked)",
+        channels: ["QRIS MPM", "Virtual Account", "Direct Debit"],
+        idempotency: "Guaranteed (Zero-Double-Charge)"
+      }
+    },
+    quality: {
+      name: "Quality Guardian (Anti-Slop & TDD)",
+      icon: "🛡️",
+      role: "Zero Tech Debt Auditor & Red-Teamer",
+      model: "DeepSeek-R1 / Gemini 4 Flash Fuzzer",
+      status: "7 Anti-Slop Pillars Enforced",
+      desc: "Menguji build, mengeksekusi TDD self-healing runner, membasmi AI slop, dan memverifikasi kontras warna WCAG 2.2 AA sebelum kode dirilis.",
+      skills: ["anti-slop", "autonomous-tdd-debugger", "zero-tech-debt-auditor", "visual-ui-auditor"],
+      packet: {
+        test_suite: "TDD Self-Healing (0 failed)",
+        anti_slop_gate: "100% Passed (R-01 to R-38)",
+        wcag_contrast: "AA 4.5:1 Minimum Met",
+        security_audit: "Zero Vulnerabilities Found"
+      }
+    },
+    govtech: {
+      name: "Open Data Engine (API Wilayah)",
+      icon: "🗺️",
+      role: "High-Scale GIS & Administrative Data",
+      model: "In-Memory Micro-Cache REST Engine",
+      status: "38 Provinces Live & Indexed",
+      desc: "Menyediakan data referensi wilayah resmi Kepmendagri 2024: 38 Provinsi, 514 Kab/Kota, 7.200+ Kecamatan, dan 83.000+ Desa dengan respon < 1.2ms.",
+      skills: ["api-design-expert", "geospatial-maps-expert", "database-orm-expert"],
+      packet: {
+        provinces: 38,
+        cities: 514,
+        villages: 83763,
+        latency: "< 1.2ms (Micro-Cache)",
+        standards: "Kepmendagri 050-145 2024"
+      }
+    }
+  };
+
+  function renderInspector(key) {
+    const data = SWARM_AGENTS[key] || SWARM_AGENTS.director;
+    inspector.innerHTML = `
+      <div class="inspector-header">
+        <div class="inspector-name">
+          <span>${data.icon}</span>
+          <span>${data.name}</span>
+        </div>
+        <div class="inspector-badge-row">
+          <span class="inspector-tag">${data.role}</span>
+          <span class="inspector-tag"><span class="status-dot online"></span> ${data.status}</span>
+        </div>
+      </div>
+      <p class="inspector-desc">${data.desc}</p>
+      <div>
+        <span class="spec-title" style="margin-bottom: 0.35rem; display: block;">Model Tier:</span>
+        <span style="font-size: 0.88rem; font-weight: 600; color: var(--cyan-neon);">${data.model}</span>
+      </div>
+      <div>
+        <span class="spec-title" style="margin-bottom: 0.35rem; display: block;">Bound Skills:</span>
+        <div class="inspector-badge-row">
+          ${data.skills.map(s => `<span class="inspector-tag" style="color: var(--cyan-neon);">#${s}</span>`).join('')}
+        </div>
+      </div>
+      <div>
+        <span class="spec-title" style="margin-bottom: 0.35rem; display: block;">Live JSON Telemetry Packet:</span>
+        <pre class="inspector-code-box"><code>${JSON.stringify(data.packet, null, 2)}</code></pre>
+      </div>
+    `;
+  }
+
+  nodes.forEach(node => {
+    node.addEventListener('click', () => {
+      nodes.forEach(n => n.classList.remove('active'));
+      node.classList.add('active');
+      const agentKey = node.getAttribute('data-agent');
+      renderInspector(agentKey);
+    });
+
+    node.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        node.click();
+      }
+    });
+  });
+
+  // Render initial director
+  renderInspector('director');
+}
+
+/* ==========================================================================
+   16. Interactive UMKM Digitalization ROI & Solution Calculator
+   ========================================================================== */
+function initUmkmCalculator() {
+  const bizBtns = document.querySelectorAll('#calc-biz-options .calc-option-btn');
+  const probBtns = document.querySelectorAll('#calc-prob-options .calc-option-btn');
+  const resultDisplay = document.getElementById('calc-result-display');
+
+  if (!bizBtns.length || !probBtns.length || !resultDisplay) return;
+
+  let currentBiz = 'retail';
+  let currentProb = 'pos';
+
+  const SOLUTIONS_MATRIX = {
+    'retail_pos': {
+      title: "Kasir Simpel PWA Offline-First (posas)",
+      desc: "Sistem Point of Sale (POS) cloud berbasis Progressive Web App yang dapat digunakan di HP, tablet, maupun laptop. Tetap berfungsi meski internet mati dan mencetak struk kasir Bluetooth secara instan.",
+      setup: "2 - 3 Hari Kerja",
+      costSaving: "Hemat Rp 3.500.000+/th (Tanpa biaya langganan bulanan)",
+      scope: "Katalog produk, barcode scanner kamera HP, cetak nota, & laporan harian.",
+      waMsg: "Halo Pak Roedy Rustam, saya pemilik toko ritel ingin berkonsultasi mengenai implementasi sistem Kasir Simpel PWA offline-first untuk menggantikan nota manual kami."
+    },
+    'retail_stock': {
+      title: "BeansHub Inventory & Stock Leakage Firewall",
+      desc: "Sistem manajemen stok pergudangan terpadu dengan peringatan otomatis stok menipis (low-stock alert) dan audit riwayat mutasi barang untuk mencegah kebocoran fisik hingga 95%.",
+      setup: "3 - 5 Hari Kerja",
+      costSaving: "Mencegah kerugian selisih stok rata-rata Rp 5 - 15 Juta/tahun",
+      scope: "Batch tracking, input stok masuk/keluar cepat, audit log, & mutasi gudang.",
+      waMsg: "Halo Pak Roedy Rustam, saya memiliki kendala selisih dan kebocoran stok pada toko ritel kami. Saya ingin berkonsultasi mengenai solusi manajemen stok BeansHub."
+    },
+    'retail_chat': {
+      title: "WhatsApp Catalog & Order Auto-Router",
+      desc: "Integrasi katalog produk otomatis ke WhatsApp dengan format pesanan instan. Mempersingkat waktu pemesanan pelanggan dari 15 menit menjadi kurang dari 1 menit.",
+      setup: "2 - 4 Hari Kerja",
+      costSaving: "Meningkatkan konversi chat menjadi order hingga 40%",
+      scope: "Link katalog instan, format pesan auto-generate, & rekap pesanan ke spreadsheet.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai integrasi katalog produk dan otomatisasi pemesanan via WhatsApp untuk toko ritel kami."
+    },
+    'retail_report': {
+      title: "Kasir Simpel Financial Telemetry Dashboard",
+      desc: "Dashboard rekapitulasi penjualan otomatis yang menyajikan omset, modal pokok (HPP), dan laba bersih harian/bulanan secara real-time langsung di layar smartphone Anda.",
+      setup: "2 - 3 Hari Kerja",
+      costSaving: "Menghemat 15+ jam kerja pembukuan manual setiap bulan",
+      scope: "Grafik omset harian, margin keuntungan per barang, & export PDF/Excel.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai dashboard laporan keuangan dan rekap laba rugi otomatis untuk usaha ritel kami."
+    },
+    'cafe_pos': {
+      title: "Kasir Simpel Cafe Edition + QRIS Table Ordering",
+      desc: "Solusi kasir kedai kopi & kafe terpadu: pemesanan per nomor meja, variasi add-on (less sugar, extra shot, oatmilk), cetak tiket bar & kitchen terpisah, serta pembayaran QRIS dinamis.",
+      setup: "3 - 4 Hari Kerja",
+      costSaving: "Perputaran meja 2x lebih cepat & zero antrean kasir",
+      scope: "Split bill, multi-printer bar & dapur, custom add-ons, & kasir mobile.",
+      waMsg: "Halo Pak Roedy Rustam, saya pemilik kafe ingin berkonsultasi mengenai sistem Kasir Simpel Cafe Edition dengan manajemen meja dan add-on menu."
+    },
+    'cafe_stock': {
+      title: "BeansHub Cafe Recipe & Raw Material Deduction",
+      desc: "Sistem otomatis yang memotong stok bahan baku (biji kopi per gram, susu per ml, sirup per pump) setiap kali kasir membukukan penjualan menu minuman.",
+      setup: "4 - 6 Hari Kerja",
+      costSaving: "HPP minuman terpantau presisi hingga tingkat gramatur",
+      scope: "Resep minuman terhubung ke stok bahan baku & peringatan susu/biji habis.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai integrasi resep menu kafe dan pemotongan otomatis stok bahan baku biji kopi/susu."
+    },
+    'cafe_chat': {
+      title: "WhatsApp Pre-Order & Takeaway Engine",
+      desc: "Pelanggan dapat memesan kopi terlebih dahulu melalui WhatsApp saat dalam perjalanan, minuman siap saat mereka tiba, tanpa menunggu antrean.",
+      setup: "2 - 3 Hari Kerja",
+      costSaving: "Menaikkan orderan take-away pagi hari hingga 35%",
+      scope: "Menu pre-order, konfirmasi waktu penjemputan, & pembayaran instan.",
+      waMsg: "Halo Pak Roedy Rustam, saya tertarik mengimplementasikan sistem pre-order dan takeaway via WhatsApp untuk kedai kopi kami."
+    },
+    'cafe_report': {
+      title: "Cafe Product Mix & Peak-Hour Analytics",
+      desc: "Analisis performa menu terlaris (Star, Cash Cow, Dog) dan jam-jam sibuk kafe untuk menentukan jadwal barista dan promo menu secara optimal.",
+      setup: "2 - 4 Hari Kerja",
+      costSaving: "Optimasi shift barista & efisiensi biaya operasional kafe",
+      scope: "Heatmap jam sibuk, kontribusi margin per menu, & summary bulanan.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai analitik menu terlaris dan laporan performa penjualan untuk kafe kami."
+    },
+    'roastery_stock': {
+      title: "BeansHub Specialty Roastery ERP (Flagship)",
+      desc: "Platform manajemen roastery komprehensif: pelacakan green bean lot, kalkulasi penyusutan berat sangrai (roasting loss %), batch numbering, dan inventaris roasted bean siap kemas.",
+      setup: "4 - 7 Hari Kerja",
+      costSaving: "Standar mutu roastery komersial berstandar ekspor",
+      scope: "Pencatatan origin/proses/varietas, kurva sangrai, & stok B2B wholesale.",
+      waMsg: "Halo Pak Roedy Rustam, saya pengelola roastery kopi ingin berkonsultasi mengenai implementasi sistem BeansHub ERP untuk manajemen batch sangrai dan stok biji kopi."
+    },
+    'roastery_pos': {
+      title: "CuppingNotes SCA 2025 + Wholesale POS",
+      desc: "Integrasi evaluasi sensori kopi standar SCA 2025 CVA dengan sistem penjualan biji kopi wholesale untuk mitra kafe dan ritel.",
+      setup: "3 - 5 Hari Kerja",
+      costSaving: "Meningkatkan daya tawar dan harga jual biji kopi spesialti",
+      scope: "Sertifikat radar sensori digital, daftar harga B2B, & invoicing tempo.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai integrasi evaluasi mutu CuppingNotes SCA 2025 dan sistem penjualan B2B roastery."
+    },
+    'roastery_chat': {
+      title: "B2B Coffee Wholesale WhatsApp Portal",
+      desc: "Otomatisasi pengiriman daftar harga biji kopi mingguan (roast list) dan pemesanan rutin untuk jaringan kafe pelanggan Anda.",
+      setup: "2 - 4 Hari Kerja",
+      costSaving: "Repeat order kafe berlangganan terkelola otomatis",
+      scope: "Daftar biji siap kirim otomatis & konfirmasi tanggal roasting.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin mengonsultasikan portal pemesanan wholesale biji kopi via WhatsApp untuk mitra kafe kami."
+    },
+    'roastery_report': {
+      title: "Roastery Cost of Goods & Margin Telemetry",
+      desc: "Penghitungan HPP biji kopi matang yang memperhitungkan harga beli green bean, susut berat sangrai, kemasan valve, gas, dan jasa roasting.",
+      setup: "3 - 5 Hari Kerja",
+      costSaving: "Penetapan harga jual B2B dan ritel yang pasti untung",
+      scope: "Kalkulator HPP per 200g/1kg & proyeksi margin profitabilitas.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai audit HPP dan kalkulasi margin roasting kopi untuk roastery kami."
+    },
+    'service_pos': {
+      title: "Service Management & Digital Work Order",
+      desc: "Sistem pencatatan order jasa, estimasi biaya suku cadang, update status pengerjaan, dan pencetakan invoice digital untuk pelanggan.",
+      setup: "2 - 4 Hari Kerja",
+      costSaving: "Mengurangi komplain status pengerjaan jasa hingga 80%",
+      scope: "Surat perintah kerja (SPK), status pengerjaan, & nota digital.",
+      waMsg: "Halo Pak Roedy Rustam, saya memiliki usaha jasa ingin berkonsultasi mengenai sistem manajemen order kerja dan kasir invoice digital."
+    },
+    'service_stock': {
+      title: "Spareparts & Consumables Inventory Tracking",
+      desc: "Manajemen suku cadang dan bahan habis pakai yang otomatis berkurang saat pekerjaan jasa selesai dilakukan.",
+      setup: "3 - 5 Hari Kerja",
+      costSaving: "Mencegah suku cadang hilang atau tidak tertagih ke nota",
+      scope: "Stok suku cadang, harga beli vs harga jual part, & audit gudang.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai manajemen inventaris suku cadang untuk usaha jasa kami."
+    },
+    'service_chat': {
+      title: "WhatsApp Service Notification & Progress Bot",
+      desc: "Kirim pesan WhatsApp otomatis ke pelanggan saat kendaraan/barang mereka 'Sedang Dikerjakan', 'Selesai & Siap Diambil', beserta rincian biaya.",
+      setup: "2 - 3 Hari Kerja",
+      costSaving: "Meningkatkan kepuasan dan kepercayaan pelanggan 100%",
+      scope: "Auto-notification WhatsApp, tagihan rincian part, & kartu garansi.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin mengintegrasikan notifikasi status pengerjaan jasa otomatis ke WhatsApp pelanggan kami."
+    },
+    'service_report': {
+      title: "Service Performance & Technician Productivity",
+      desc: "Laporan omset jasa bulanan, bagi hasil/komisi teknisi otomatis, dan statistik pelanggan setia.",
+      setup: "2 - 4 Hari Kerja",
+      costSaving: "Penghitungan komisi mekanik/teknisi transparan tanpa konflik",
+      scope: "Laporan komisi teknisi, rekap omset per kategori jasa, & database pelanggan.",
+      waMsg: "Halo Pak Roedy Rustam, saya ingin berkonsultasi mengenai dashboard laporan performa usaha jasa dan komisi teknisi otomatis."
+    }
+  };
+
+  function updateSolution() {
+    const key = `${currentBiz}_${currentProb}`;
+    const fallbackKey = 'retail_pos';
+    const sol = SOLUTIONS_MATRIX[key] || SOLUTIONS_MATRIX[fallbackKey];
+
+    const encodedMsg = encodeURIComponent(sol.waMsg);
+    const waUrl = `https://wa.me/6281241003047?text=${encodedMsg}`;
+
+    resultDisplay.innerHTML = `
+      <div class="result-left">
+        <div class="result-solution-name">⚡ Solusi: ${sol.title}</div>
+        <p class="result-solution-desc">${sol.desc}</p>
+        <div class="result-specs-grid">
+          <div class="spec-item">
+            <span class="spec-title">Estimasi Waktu Setup</span>
+            <span class="spec-val" style="color: var(--cyan-neon);">${sol.setup}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-title">Dampak &amp; Efisiensi Biaya</span>
+            <span class="spec-val" style="color: #10B981;">${sol.costSaving}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-title">Cakupan Modul</span>
+            <span class="spec-val" style="font-size: 0.85rem; font-weight: 500;">${sol.scope}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-wa-action-box">
+        <a href="${waUrl}" target="_blank" rel="noopener" class="calc-wa-action-btn">
+          <span>💬 Konsultasikan Solusi Ini</span>
+        </a>
+        <span class="text-muted" style="font-size: 0.78rem; text-align: center; width: 100%;">
+          Langsung terhubung dengan Roedy Rustam
+        </span>
+      </div>
+    `;
+  }
+
+  bizBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      bizBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentBiz = btn.getAttribute('data-biz') || 'retail';
+      updateSolution();
+    });
+  });
+
+  probBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      probBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentProb = btn.getAttribute('data-prob') || 'pos';
+      updateSolution();
+    });
+  });
+
+  // Initial render
+  updateSolution();
+}
+
+/* ==========================================================================
+   17. Universal Command Palette System (Raycast / Linear Style)
+   ========================================================================== */
+function initCommandPalette() {
+  const backdrop = document.getElementById('command-palette');
+  const input = document.getElementById('cmd-palette-input');
+  const resultsContainer = document.getElementById('cmd-palette-results');
+  const openBtn = document.getElementById('cmd-palette-btn');
+
+  if (!backdrop || !input || !resultsContainer) return;
+
+  let selectedIndex = 0;
+  let filteredItems = [];
+
+  // Build searchable index of items
+  const STATIC_ACTIONS = [
+    { title: "Konsultasi IT Enterprise via WhatsApp", sub: "Buka chat langsung untuk audit arsitektur sistem & performa", cat: "Action", icon: "🏛️", url: "https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20ingin%20berkonsultasi%20mengenai%20arsitektur%20sistem%20IT%20dan%20audit%20performa%20untuk%20perusahaan%20kami." },
+    { title: "Konsultasi Digitalisasi UMKM via WhatsApp", sub: "Kasir Simpel POS, inventory roastery, & otomatisasi ritel", cat: "Action", icon: "🏪", url: "https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20saya%20pelaku%20usaha%20UMKM%20ingin%20berkonsultasi%20mengenai%20sistem%20kasir%20cloud%20POS%2C%20inventaris%2C%20dan%20digitalisasi%20operasional." },
+    { title: "Undang Trainer Workshop AI Developer", sub: "Adopsi AI agent, Model Context Protocol & Doktrin Anti-Slop", cat: "Action", icon: "🎓", url: "https://wa.me/6281241003047?text=Halo%20Pak%20Roedy%20Rustam%2C%20kami%20tertarik%20mengundang%20Anda%20sebagai%20Trainer%20Workshop%20AI%20%2F%20konsultasi%20implementasi%20AI%20Agents%20untuk%20tim%20kami." },
+    { title: "API Wilayah Indonesia 2024 (Live Explorer)", sub: "Uji database 38 Provinsi, 514 Kab/Kota, 83.000+ Desa", cat: "Section", icon: "🗺️", anchor: "#govtech-explorer" },
+    { title: "CuppingNotes SCA 2025 CVA Platform", sub: "Evaluasi sensori kopi spesialti standar dunia", cat: "Live Demo", icon: "☕", url: "https://cuppingnotes.online" },
+    { title: "Interactive Terminal (RoedyOS Vibes CLI)", sub: "Jalankan perintah help, photo, about, vibes, wa di terminal", cat: "Section", icon: "💻", anchor: "#terminal-container" },
+    { title: "Multi-Agent Swarm Topology Visualizer", sub: "Lihat arsitektur orkestrasi vibes-plug & Model Context Protocol", cat: "Section", icon: "🤖", anchor: "#swarm-visualizer" },
+    { title: "Kalkulator Kebutuhan Solusi Digital UMKM", sub: "Hitung solusi POS dan estimasi waktu setup untuk bisnis Anda", cat: "Section", icon: "🧮", anchor: "#umkm-calculator" },
+    { title: "Toggle Tema (Cyber Obsidian / Clean Daylight)", sub: "Ganti tampilan dark mode atau light mode dengan kontras tinggi", cat: "Preference", icon: "🌓", action: "toggle_theme" },
+    { title: "Toggle Audio Feedback UI", sub: "Aktifkan atau matikan suara synthesizer antarmuka", cat: "Preference", icon: "🔊", action: "toggle_sound" }
+  ];
+
+  function openPalette() {
+    playUiSound('open');
+    backdrop.classList.add('active');
+    document.body.classList.add('nav-open');
+    input.value = '';
+    filterResults('');
+    setTimeout(() => input.focus(), 50);
+  }
+
+  function closePalette() {
+    playUiSound('click');
+    backdrop.classList.remove('active');
+    document.body.classList.remove('nav-open');
+  }
+
+  function filterResults(query) {
+    const q = query.toLowerCase().trim();
+    const repoItems = (typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : []).map(p => ({
+      title: p.title,
+      sub: p.tagline,
+      cat: "Repository",
+      icon: "📦",
+      url: p.github,
+      demo: p.demo,
+      id: p.id
+    }));
+
+    const allItems = [...STATIC_ACTIONS, ...repoItems];
+
+    if (!q) {
+      filteredItems = allItems.slice(0, 10);
+    } else {
+      filteredItems = allItems.filter(item => 
+        item.title.toLowerCase().includes(q) ||
+        item.sub.toLowerCase().includes(q) ||
+        item.cat.toLowerCase().includes(q)
+      ).slice(0, 12);
+    }
+
+    selectedIndex = 0;
+    renderResults();
+  }
+
+  function renderResults() {
+    if (filteredItems.length === 0) {
+      resultsContainer.innerHTML = `
+        <div style="padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+          Tidak ada hasil untuk pencarian ini. Coba kata kunci lain seperti <em>"umkm"</em>, <em>"ai"</em>, atau <em>"pos"</em>.
+        </div>
+      `;
+      return;
+    }
+
+    resultsContainer.innerHTML = filteredItems.map((item, idx) => `
+      <div class="cmd-item ${idx === selectedIndex ? 'selected' : ''}" data-idx="${idx}" role="option" aria-selected="${idx === selectedIndex}">
+        <div class="cmd-item-left">
+          <span class="cmd-item-icon">${item.icon}</span>
+          <div>
+            <div class="cmd-item-title">${item.title}</div>
+            <div class="cmd-item-sub">${item.sub}</div>
+          </div>
+        </div>
+        <span class="cmd-item-category">${item.cat}</span>
+      </div>
+    `).join('');
+
+    resultsContainer.querySelectorAll('.cmd-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.getAttribute('data-idx') || '0', 10);
+        executeItem(filteredItems[idx]);
+      });
+      el.addEventListener('mouseenter', () => {
+        selectedIndex = parseInt(el.getAttribute('data-idx') || '0', 10);
+        updateSelectionHighlight();
+      });
+    });
+  }
+
+  function updateSelectionHighlight() {
+    const items = resultsContainer.querySelectorAll('.cmd-item');
+    items.forEach((item, idx) => {
+      item.classList.toggle('selected', idx === selectedIndex);
+      if (idx === selectedIndex) {
+        item.scrollIntoView({ block: 'nearest' });
+      }
+    });
+  }
+
+  function executeItem(item) {
+    if (!item) return;
+    closePalette();
+
+    if (item.action === 'toggle_theme') {
+      document.getElementById('theme-toggle')?.click();
+    } else if (item.action === 'toggle_sound') {
+      document.getElementById('sound-toggle-btn')?.click();
+    } else if (item.anchor) {
+      const target = document.querySelector(item.anchor);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (item.id && typeof openProjectModal === 'function') {
+      openProjectModal(item.id);
+    } else if (item.url) {
+      window.open(item.url, '_blank', 'noopener');
+    }
+  }
+
+  // Keyboard navigation
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (filteredItems.length > 0) {
+        selectedIndex = (selectedIndex + 1) % filteredItems.length;
+        updateSelectionHighlight();
+        playUiSound('click');
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (filteredItems.length > 0) {
+        selectedIndex = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+        updateSelectionHighlight();
+        playUiSound('click');
+      }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filteredItems[selectedIndex]) {
+        executeItem(filteredItems[selectedIndex]);
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closePalette();
+    }
+  });
+
+  input.addEventListener('input', (e) => {
+    filterResults(e.target.value);
+  });
+
+  openBtn?.addEventListener('click', openPalette);
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      closePalette();
+    }
+  });
+
+  // Global Ctrl+K / Cmd+K handler
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (backdrop.classList.contains('active')) {
+        closePalette();
+      } else {
+        openPalette();
+      }
+    }
+  });
+}
+
 

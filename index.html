@@ -52,7 +52,8 @@
   <meta property="og:image:secure_url" content="https://roedyrustam.github.io/assets/images/roedy-rustam.jpg">
   <meta property="og:image:width" content="800">
   <meta property="og:image:height" content="1000">
-  <meta property="og:image:alt" content="Roedy Rustam — Konsultan UMKM, AI Engineer & Konsultan IT Indonesia Portrait">
+  <meta property="og:alt" content="Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Indonesia Portrait">
+  <meta property="og:image:alt" content="Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Indonesia Portrait">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:locale" content="id_ID">
   <meta property="og:locale:alternate" content="en_US">
@@ -63,11 +64,11 @@
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://roedyrustam.github.io/">
-  <meta name="twitter:title" content="Roedy Rustam — Konsultan UMKM, AI Engineer & Konsultan IT Indonesia">
+  <meta name="twitter:title" content="Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Indonesia">
   <meta name="twitter:description"
     content="Konsultan UMKM (Kasir Simpel POS), AI Engineer (vibes-plug 161 skills), dan Konsultan IT Enterprise Indonesia. 123+ Repositories, 154+ Stars di GitHub.">
   <meta name="twitter:image" content="https://roedyrustam.github.io/assets/images/roedy-rustam.jpg">
-  <meta name="twitter:image:alt" content="Roedy Rustam — Official Portrait">
+  <meta name="twitter:image:alt" content="Roedy Rustam: Official Portrait">
   <meta name="twitter:site" content="@rudyasho">
   <meta name="twitter:creator" content="@rudyasho">
 
@@ -98,7 +99,7 @@
         "@type": "WebSite",
         "@id": "https://roedyrustam.github.io/#website",
         "url": "https://roedyrustam.github.io/",
-        "name": "Roedy Rustam — Konsultan UMKM, AI Engineer & Konsultan IT Indonesia",
+        "name": "Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Indonesia",
         "description": "Portofolio resmi & ekosistem open-source Roedy Rustam: Konsultan UMKM (Kasir Simpel POS, BeansHub), AI Engineer (vibes-plug 161 skills, sinapsai), dan Konsultan IT Enterprise. 123+ repositori GitHub, Jakarta, Indonesia.",
         "publisher": {
           "@id": "https://roedyrustam.github.io/#person"
@@ -109,7 +110,7 @@
         "@type": "ProfilePage",
         "@id": "https://roedyrustam.github.io/#profilepage",
         "url": "https://roedyrustam.github.io/",
-        "name": "Roedy Rustam — Konsultan UMKM, AI Engineer & Konsultan IT Profile & Portfolio",
+        "name": "Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Profile & Portfolio",
         "primaryImageOfPage": "https://roedyrustam.github.io/assets/images/roedy-rustam.jpg",
         "dateCreated": "2024-01-01T00:00:00+07:00",
         "dateModified": "2026-10-18T16:35:00+08:00",
@@ -482,6 +483,17 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="cmd-palette-btn" id="cmd-palette-btn" title="Cari Cepat & Navigasi (Ctrl+K)" aria-label="Buka Command Palette">
+          <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span class="cmd-shortcut-text"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+        </button>
+
+        <button class="sound-toggle-btn" id="sound-toggle-btn" title="Audio Feedback UI (Mute / Unmute)" aria-label="Toggle UI Audio">
+          <span id="sound-toggle-icon">🔇</span>
+        </button>
+
         <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Dark/Light Mode">
           <span id="theme-toggle-icon">
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -569,11 +581,32 @@
           </p>
         </div>
 
-        <p class="hero-description">
-          Menyediakan konsultasi arsitektur enterprise, implementasi AI agent otonom, digitalisasi bisnis UMKM, dan
-          workshop pelatihan engineering berstandar industri dengan rekam jejak nyata <strong>123+ repositori
-            publik</strong> dan <strong>154+ GitHub stars</strong>.
+        <!-- Dual Persona Lens Switcher (UMKM vs Tech Lead/CTO) -->
+        <div class="persona-lens-wrapper">
+          <span class="persona-lens-label">Pilih Sudut Pandang Solusi:</span>
+          <div class="persona-lens-controls" role="tablist" aria-label="Sudut Pandang Profil">
+            <button type="button" class="persona-tab-btn active" id="lens-btn-umkm" role="tab" aria-selected="true" data-lens="umkm">
+              <span class="tab-btn-icon">🏪</span>
+              <span>Pemilik Bisnis & UMKM</span>
+            </button>
+            <button type="button" class="persona-tab-btn" id="lens-btn-tech" role="tab" aria-selected="false" data-lens="tech">
+              <span class="tab-btn-icon">⚡</span>
+              <span>CTO & AI Engineer</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="hero-description" id="hero-description-text">
+          Menyediakan transformasi digital bisnis UMKM tanpa biaya langganan mencekik: kasir cloud POS offline-first, manajemen stok pergudangan, integrasi otomatisasi WhatsApp CRM, serta konsultasi arsitektur enterprise terbukti melalui <strong>123+ repositori publik</strong> dan <strong>154+ GitHub stars</strong>.
         </p>
+
+        <!-- Dynamic Highlights Pill Row driven by active Persona Lens -->
+        <div class="persona-highlights-row" id="persona-highlights-container">
+          <span class="persona-pill"><span class="pill-dot"></span> Point of Sale (POS) Cloud Ringan</span>
+          <span class="persona-pill"><span class="pill-dot"></span> Manajemen Stok & Roastery BeansHub</span>
+          <span class="persona-pill"><span class="pill-dot"></span> Bebas Biaya Langganan Bulanan</span>
+          <span class="persona-pill"><span class="pill-dot"></span> Integrasi Chat WhatsApp CRM</span>
+        </div>
 
         <div class="hero-actions">
           <a href="#services" class="btn btn-primary">
@@ -1114,6 +1147,71 @@
         </article>
 
       </div>
+
+      <!-- Interactive UMKM Digitalization & ROI Solution Calculator -->
+      <div class="umkm-calculator-card" id="umkm-calculator">
+        <div class="umkm-calc-header">
+          <div class="calc-badge-group">
+            <span class="calc-tag">🏪 Solusi Terukur Bisnis Ritel</span>
+            <span class="calc-status"><span class="status-dot live"></span> Rekomendasi Terpadu Tanpa Langganan</span>
+          </div>
+          <h3 class="calc-title">Kalkulator Kebutuhan Digitalisasi UMKM</h3>
+          <p class="calc-desc">
+            Pilih jenis usaha dan kendala operasional Anda saat ini untuk melihat arsitektur solusi, estimasi waktu setup, dan proyeksi efisiensi:
+          </p>
+        </div>
+
+        <div class="umkm-calc-grid">
+          <div class="calc-step-box">
+            <span class="step-label">1. Bidang Usaha:</span>
+            <div class="calc-pill-group" id="calc-biz-options">
+              <button type="button" class="calc-option-btn active" data-biz="retail">
+                <span class="btn-icon">🛒</span>
+                <span>Toko Ritel / Kelontong</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-biz="cafe">
+                <span class="btn-icon">☕</span>
+                <span>Kafe / Kedai Kopi</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-biz="roastery">
+                <span class="btn-icon">🌱</span>
+                <span>Roastery Biji Kopi</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-biz="service">
+                <span class="btn-icon">💼</span>
+                <span>Usaha Jasa / Bengkel</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="calc-step-box">
+            <span class="step-label">2. Kendala Operasional Paling Mendesak:</span>
+            <div class="calc-pill-group" id="calc-prob-options">
+              <button type="button" class="calc-option-btn active" data-prob="pos">
+                <span class="btn-icon">📝</span>
+                <span>Transaksi kasir & nota masih manual</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-prob="stock">
+                <span class="btn-icon">📦</span>
+                <span>Stok sering selisih & kebocoran barang</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-prob="chat">
+                <span class="btn-icon">💬</span>
+                <span>Pesanan WhatsApp menumpuk & lambat dibalas</span>
+              </button>
+              <button type="button" class="calc-option-btn" data-prob="report">
+                <span class="btn-icon">📊</span>
+                <span>Sulit rekap laba rugi & cashflow harian</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Solution Output Box -->
+        <div class="calc-result-display" id="calc-result-display">
+          <!-- Rendered dynamically by main.js with structured 1-click WhatsApp consultation -->
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1123,7 +1221,7 @@
       <div class="spotlight-banner">
         <div class="spotlight-content">
           <span class="section-tag">🌟 Flagship AI Developer Ecosystem</span>
-          <h3>vibes-plug — 161 AI Developer Skills & Multi-Agent Swarm</h3>
+          <h3>vibes-plug: 161 AI Developer Skills & Multi-Agent Swarm</h3>
           <p>
             Plugin AI terpadu untuk <strong>Google Antigravity</strong>, <strong>Claude Code</strong>,
             <strong>Cursor</strong>, dan <strong>OpenAI Codex</strong>. Memberikan coding assistant kemampuan otonom
@@ -1179,6 +1277,69 @@
                 </path>
               </svg>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive AI Swarm Topology Visualizer (v5.0 Enterprise Architecture) -->
+      <div class="swarm-visualizer-card" id="swarm-visualizer">
+        <div class="swarm-vis-header">
+          <div class="swarm-vis-title-group">
+            <span class="vis-badge"><span class="status-dot live"></span> Live Multi-Agent Swarm Topology</span>
+            <h4>Orkestrasi Otonom vibes-plug &amp; Model Context Protocol (MCP)</h4>
+          </div>
+          <span class="swarm-vis-subtitle">Klik salah satu node agen untuk menginspeksi peran, model LLM, tool registry, dan simulasi data stream:</span>
+        </div>
+
+        <div class="swarm-vis-body">
+          <!-- Visual Node Network -->
+          <div class="swarm-network-stage">
+            <div class="swarm-node-item active" data-agent="director" id="node-director" tabindex="0" role="button" aria-label="Inspect Swarm Director">
+              <div class="node-icon-ring">
+                <span class="node-core-icon">👑</span>
+                <span class="node-pulse-ring"></span>
+              </div>
+              <span class="node-label">Swarm Director</span>
+              <span class="node-role-badge">vibes-plug Orchestrator</span>
+            </div>
+
+            <div class="swarm-data-lines">
+              <div class="packet-line line-1"><span class="packet-particle"></span></div>
+              <div class="packet-line line-2"><span class="packet-particle"></span></div>
+              <div class="packet-line line-3"><span class="packet-particle"></span></div>
+              <div class="packet-line line-4"><span class="packet-particle"></span></div>
+            </div>
+
+            <div class="swarm-subagents-grid">
+              <div class="swarm-node-item" data-agent="rag" id="node-rag" tabindex="0" role="button" aria-label="Inspect Knowledge Architect">
+                <div class="node-icon-ring"><span class="node-core-icon">🧠</span></div>
+                <span class="node-label">Knowledge Architect</span>
+                <span class="node-role-badge">HydraDB Graph</span>
+              </div>
+
+              <div class="swarm-node-item" data-agent="fintech" id="node-fintech" tabindex="0" role="button" aria-label="Inspect Payment Sentinel">
+                <div class="node-icon-ring"><span class="node-core-icon">💳</span></div>
+                <span class="node-label">Payment Sentinel</span>
+                <span class="node-role-badge">DOKU SNAP BI</span>
+              </div>
+
+              <div class="swarm-node-item" data-agent="quality" id="node-quality" tabindex="0" role="button" aria-label="Inspect Quality Guardian">
+                <div class="node-icon-ring"><span class="node-core-icon">🛡️</span></div>
+                <span class="node-label">Quality Guardian</span>
+                <span class="node-role-badge">Anti-Slop / TDD</span>
+              </div>
+
+              <div class="swarm-node-item" data-agent="govtech" id="node-govtech" tabindex="0" role="button" aria-label="Inspect GovTech Open Data">
+                <div class="node-icon-ring"><span class="node-core-icon">🗺️</span></div>
+                <span class="node-label">Open Data Engine</span>
+                <span class="node-role-badge">API Wilayah 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Agent Live Inspector Pane -->
+          <div class="swarm-inspector-pane" id="swarm-inspector">
+            <!-- Populated dynamically by main.js -->
           </div>
         </div>
       </div>
@@ -1246,7 +1407,7 @@
             <span id="wilayah-latency-text">Latency: &lt; 1.2ms (In-Memory Micro-Cache)</span>
           </span>
         </div>
-        <h2 class="section-title">API Wilayah Indonesia 2024 — Live Interactive Explorer</h2>
+        <h2 class="section-title">API Wilayah Indonesia 2024: Live Interactive Explorer</h2>
         <p class="section-desc">
           Uji langsung arsitektur database dan REST API wilayah administratif <strong>38 Provinsi</strong>, <strong>514
             Kabupaten/Kota</strong>, <strong>7.200+ Kecamatan</strong>, dan <strong>83.000+ Desa</strong> sesuai standar
@@ -1452,7 +1613,7 @@
       <div class="coffee-card-wrapper">
         <div class="coffee-info">
           <span class="section-tag coffee-tag">☕ Specialty Coffee Science & Tech</span>
-          <h3>CuppingNotes — SCA 2025 Coffee Value Assessment (CVA)</h3>
+          <h3>CuppingNotes: SCA 2025 Coffee Value Assessment (CVA)</h3>
           <p>
             Mendigitalkan evaluasi sensori kopi spesialti dunia. Menggantikan formulir kertas kuno dengan platform PWA
             enterprise yang mengkalkulasi skor deskriptif dan afektif standar <strong>SCA 2025 CVA</strong> secara
@@ -1827,6 +1988,29 @@
       </button>
       <div id="modal-content-body">
         <!-- Rendered dynamically on click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Command Palette (Raycast / Linear Style: Ctrl+K / Cmd+K) -->
+  <div class="cmd-palette-backdrop" id="command-palette" role="dialog" aria-modal="true" aria-labelledby="cmd-palette-input">
+    <div class="cmd-palette-card">
+      <div class="cmd-palette-search-row">
+        <svg class="cmd-search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Cari repositori, layanan, perintah terminal, atau aksi (Ketik untuk mencari)..." autocomplete="off" spellcheck="false">
+        <span class="cmd-badge-esc"><kbd>ESC</kbd></span>
+      </div>
+
+      <div class="cmd-palette-results" id="cmd-palette-results">
+        <!-- Filtered items dynamically listed here -->
+      </div>
+
+      <div class="cmd-palette-footer">
+        <span class="cmd-hint-item"><kbd>↑</kbd> <kbd>↓</kbd> Navigasi</span>
+        <span class="cmd-hint-item"><kbd>↵ Enter</kbd> Buka</span>
+        <span class="cmd-hint-item"><kbd>ESC</kbd> Tutup</span>
       </div>
     </div>
   </div>
