@@ -3034,6 +3034,38 @@ body.nav-open {
    Responsive Breakpoints & Mobile Optimization
    ========================================================================== */
 
+/* Navigation Backdrop Overlay & Body Lock */
+.nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 98;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+body.nav-open .wa-floating-btn {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
 /* Laptop & Small Desktop Refinement */
 @media (max-width: 1200px) {
   .nav-menu {
@@ -3170,7 +3202,7 @@ body.nav-open {
   }
 
   .hero-section {
-    padding: 6rem 0 3.25rem;
+    padding: 6.5rem 0 3.25rem;
   }
 
   .hero-title {
@@ -3465,7 +3497,7 @@ body.nav-open {
   }
 
   .hero-section {
-    padding: 5.25rem 0 2.5rem;
+    padding: 5.75rem 0 2.5rem;
   }
 
   .hero-title {
