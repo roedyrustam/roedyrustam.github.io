@@ -3031,45 +3031,190 @@ body.nav-open {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Optimization
    ========================================================================== */
+
+/* Laptop & Small Desktop Refinement */
+@media (max-width: 1200px) {
+  .nav-menu {
+    gap: 0.95rem;
+  }
+  .nav-link {
+    font-size: 0.86rem;
+  }
+}
+
+/* Tablet & Mobile Menu Trigger (<= 1024px) */
 @media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.75rem; }
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    background: rgba(13, 18, 27, 0.98);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.75rem 1.25rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    transform: translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    z-index: 99;
+  }
+
+  [data-theme="light"] .nav-menu {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  [data-theme="light"] .nav-menu li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0.5rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    width: 100%;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: rgba(0, 242, 254, 0.08);
+    padding-left: 0.85rem;
+    color: var(--cyan-neon);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-top: 1.25rem;
+    border-bottom: none !important;
+  }
+
+  .nav-mobile-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .nav-mobile-cta-btn.wa {
+    background: #25D366;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .nav-mobile-cta-btn.wa:hover {
+    background: #20BD5A;
+  }
+
+  .nav-mobile-cta-btn.gh {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-stats-panel { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .services-grid { grid-template-columns: 1fr; }
   .spotlight-banner { grid-template-columns: 1fr; }
   .govtech-explorer-grid { grid-template-columns: 1fr; }
   .coffee-card-wrapper { grid-template-columns: 1fr; }
-  .hero-title { font-size: 2.8rem; }
+  .hero-title { font-size: 2.75rem; }
 }
 
+/* Tablet & Mobile Portrait (<= 768px) */
 @media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: var(--bg-secondary);
-    flex-direction: column;
-    padding: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
+  .container {
+    padding: 0 1.25rem;
   }
 
-  .nav-menu.active {
-    transform: translateY(0);
+  .hero-section {
+    padding: 6rem 0 3.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5.5vw, 2.45rem);
+    line-height: 1.18;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
   }
 
   .hero-identity-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .identity-title-badge {
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 1.25rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
   }
 
   .portrait-presentation-card {
-    max-width: 420px;
+    max-width: 440px;
     margin: 0 auto;
   }
 
@@ -3077,18 +3222,352 @@ body.nav-open {
     grid-template-columns: 1fr;
   }
 
-  .mobile-menu-toggle { display: block; }
-  .hero-title { font-size: 2.3rem; }
-  .hero-stats-row { flex-wrap: wrap; gap: 1.25rem; }
-  .filter-bar { flex-direction: column; align-items: stretch; }
-  .search-input { width: 100%; }
-  .search-input:focus { width: 100%; }
-  .spotlight-bullets { grid-template-columns: 1fr; }
-  .coffee-features-grid { grid-template-columns: 1fr; }
-  .modal-meta-grid { grid-template-columns: 1fr; }
-  .contact-card-wrapper { padding: 2rem 1.5rem; }
-  .contact-wa-grid { grid-template-columns: 1fr; }
-  .wa-popover-card { right: 1rem; bottom: 5rem; width: calc(100vw - 2rem); }
-  .wa-floating-btn { bottom: 1.25rem; right: 1.25rem; padding: 0.5rem 0.9rem; }
-  .toast-notification { bottom: 5.5rem; right: 1.25rem; }
+  .about-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .about-actions-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-actions-bar {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .service-actions-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .filter-categories {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filter-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .search-box-wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .search-input-group {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100% !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spotlight-banner {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .spotlight-bullets {
+    grid-template-columns: 1fr;
+  }
+
+  .govtech-selectors {
+    grid-template-columns: 1fr;
+  }
+
+  .govtech-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coffee-radar-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .coffee-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coffee-actions {
+    flex-direction: column;
+  }
+
+  .coffee-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .terminal-window {
+    border-radius: var(--radius-md);
+  }
+
+  .terminal-body {
+    min-height: 200px;
+    max-height: 280px;
+    font-size: 0.82rem;
+    padding: 0.85rem;
+  }
+
+  .terminal-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.5rem 0.85rem 0.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .terminal-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .term-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .modal-card {
+    padding: 1.5rem 1.15rem;
+    width: 94vw;
+    max-height: 88vh;
+  }
+
+  .modal-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-card-wrapper {
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-wa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wa-popover-card {
+    right: 1rem;
+    left: 1rem;
+    bottom: 5rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .wa-floating-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .toast-notification {
+    bottom: 5.5rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    max-width: calc(100vw - 2.5rem);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+/* Compact Mobile Topbar (<= 540px) */
+@media (max-width: 540px) {
+  .nav-github-text {
+    display: none;
+  }
+
+  #nav-github-btn {
+    padding: 0.5rem;
+    min-width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-avatar-frame {
+    width: 32px;
+    height: 32px;
+  }
+
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 8px 7px;
+  }
+}
+
+/* Extra Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-section {
+    padding: 5.25rem 0 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .identity-title-badge {
+    font-size: 0.65rem;
+    white-space: normal;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .aeo-lead-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .aeo-lead-text {
+    font-size: 0.88rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-stats-row {
+    gap: 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.45rem;
+  }
+
+  .stat-label {
+    font-size: 0.74rem;
+  }
+
+  .about-stats-panel {
+    gap: 0.75rem;
+  }
+
+  .about-stat-num {
+    font-size: 1.45rem;
+  }
+
+  .about-stat-lbl {
+    font-size: 0.74rem;
+  }
+
+  .project-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .npm-install-bar {
+    font-size: 0.75rem;
+  }
+
+  .prompt-user {
+    display: none;
+  }
+
+  .prompt-path {
+    display: inline;
+  }
+
+  .wa-floating-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .wa-fab-text-box {
+    display: none;
+  }
+
+  .wa-fab-icon-box {
+    margin: 0;
+  }
 }
