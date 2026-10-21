@@ -56,27 +56,85 @@ function initNavigation() {
   const navbar = document.getElementById('navbar');
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.getElementById('nav-links');
+  const backdrop = document.getElementById('nav-backdrop');
 
+  // Sticky header transition on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       navbar?.classList.add('nav-scrolled');
     } else {
       navbar?.classList.remove('nav-scrolled');
     }
-  });
+  }, { passive: true });
+
+  function closeMenu() {
+    navLinks?.classList.remove('active');
+    mobileBtn?.classList.remove('active');
+    backdrop?.classList.remove('active');
+    mobileBtn?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+
+  function openMenu() {
+    navLinks?.classList.add('active');
+    mobileBtn?.classList.add('active');
+    backdrop?.classList.add('active');
+    mobileBtn?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
 
   if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileBtn.classList.toggle('active');
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = navLinks.classList.contains('active');
+      if (isActive) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
+
+    backdrop?.addEventListener('click', closeMenu);
 
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileBtn.classList.remove('active');
+        closeMenu();
       });
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Scrollspy: automatically highlight active section in navbar
+  const sections = document.querySelectorAll('section[id]');
+  if ('IntersectionObserver' in window && sections.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-25% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks?.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${currentId}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => navObserver.observe(sec));
   }
 }
 
