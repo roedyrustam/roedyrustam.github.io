@@ -72,8 +72,14 @@
   <meta name="twitter:site" content="@rudyasho">
   <meta name="twitter:creator" content="@rudyasho">
 
-  <!-- AI & Generative Engine Discovery Links -->
+  <!-- AI & Generative Engine Discovery Links (GEO / LLMO 2026) -->
   <link rel="help" type="text/plain" href="https://roedyrustam.github.io/llms.txt" title="AI Index">
+  <link rel="alternate" type="text/plain" href="https://roedyrustam.github.io/llms.txt" title="LLMs.txt (AI Knowledge Index)">
+  <link rel="alternate" type="text/plain" href="https://roedyrustam.github.io/llms-full.txt" title="LLMs-Full.txt (Complete AI Technical Dossier)">
+  <meta name="ai-content-declaration" content="human-authored, empirically-verified">
+  <meta name="citation_author" content="Roedy Rustam">
+  <meta name="citation_title" content="Roedy Rustam — Konsultan UMKM, AI Engineer &amp; Konsultan IT Indonesia">
+  <meta name="citation_publication_date" content="2026-10-28">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml"
@@ -113,9 +119,25 @@
         "name": "Roedy Rustam | Konsultan UMKM, AI Engineer & Konsultan IT Profile & Portfolio",
         "primaryImageOfPage": "https://roedyrustam.github.io/assets/images/roedy-rustam.jpg",
         "dateCreated": "2024-01-01T00:00:00+07:00",
-        "dateModified": "2026-10-18T16:35:00+08:00",
+        "dateModified": "2026-10-28T01:20:00+08:00",
         "mainEntity": {
           "@id": "https://roedyrustam.github.io/#person"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://roedyrustam.github.io/#webpage",
+        "url": "https://roedyrustam.github.io/",
+        "name": "Roedy Rustam — Konsultan UMKM, AI Engineer & Konsultan IT Indonesia",
+        "isPartOf": {
+          "@id": "https://roedyrustam.github.io/#website"
+        },
+        "about": {
+          "@id": "https://roedyrustam.github.io/#person"
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".aeo-lead-text", "#hero-description-text", ".faq-answer-content"]
         }
       },
       {
@@ -123,6 +145,10 @@
         "@id": "https://roedyrustam.github.io/#person",
         "name": "Roedy Rustam",
         "alternateName": ["rudyasho", "Roedy"],
+        "disambiguatingDescription": "Pencipta ekosistem vibes-plug (161 AI skills & MCP v1.x), AI gateway sinapsai, sistem Kasir Simpel POS, platform evaluasi sensori CuppingNotes SCA 2025 CVA, dan API Wilayah Indonesia 2024.",
+        "gender": "Male",
+        "knowsLanguage": ["id", "en"],
+        "mainEntityOfPage": "https://roedyrustam.github.io/",
         "url": "https://roedyrustam.github.io/",
         "image": "https://roedyrustam.github.io/assets/images/roedy-rustam.jpg",
         "jobTitle": "Konsultan UMKM, AI Engineer & Konsultan IT Indonesia",
@@ -287,11 +313,15 @@
         "@type": "SoftwareApplication",
         "@id": "https://roedyrustam.github.io/#vibes-plug",
         "name": "vibes-plug",
+        "softwareVersion": "4.4.4",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Cross-platform (Google Antigravity, Claude Code, Cursor, Codex)",
         "description": "Unified 161 AI Developer Skills and Multi-Agent Swarm ecosystem for autonomous coding, architecture design, and Core Web Vitals optimization.",
         "url": "https://github.com/roedyrustam/vibes-plug",
+        "codeRepository": "https://github.com/roedyrustam/vibes-plug",
         "downloadUrl": "https://www.npmjs.com/package/vibes-plug",
+        "license": "https://opensource.org/licenses/MIT",
+        "programmingLanguage": ["TypeScript", "Markdown"],
         "author": {
           "@id": "https://roedyrustam.github.io/#person"
         },
@@ -310,10 +340,14 @@
         "@type": "SoftwareApplication",
         "@id": "https://roedyrustam.github.io/#sinapsai",
         "name": "sinapsai",
+        "softwareVersion": "1.0.0",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Cross-platform (Node.js, Bun, TypeScript)",
         "description": "Blazing-fast in-process AI Gateway & Control Plane with Circuit Breaker, Automatic Failover, and Unified LLM API for Node.js & TypeScript.",
         "url": "https://github.com/roedyrustam/sinapsai",
+        "codeRepository": "https://github.com/roedyrustam/sinapsai",
+        "license": "https://opensource.org/licenses/MIT",
+        "programmingLanguage": "TypeScript",
         "author": {
           "@id": "https://roedyrustam.github.io/#person"
         }
@@ -326,6 +360,8 @@
         "operatingSystem": "Web, iOS, Android (PWA)",
         "description": "Digital specialty coffee sensory evaluation platform adhering to the Specialty Coffee Association 2025 Coffee Value Assessment standard.",
         "url": "https://cuppingnotes.online",
+        "codeRepository": "https://github.com/roedyrustam/coffeangu",
+        "programmingLanguage": ["TypeScript", "Angular"],
         "author": {
           "@id": "https://roedyrustam.github.io/#person"
         }
@@ -338,6 +374,8 @@
         "operatingSystem": "Cross-platform (PHP, SQL, REST API)",
         "description": "Comprehensive High-Performance Database & REST API for Indonesian Administrative Regions (38 Provinces, 514 Regencies, 7,200+ Districts, 83,000+ Villages).",
         "url": "https://github.com/roedyrustam/API-Wilayah-2024",
+        "codeRepository": "https://github.com/roedyrustam/API-Wilayah-2024",
+        "programmingLanguage": ["PHP", "SQL"],
         "author": {
           "@id": "https://roedyrustam.github.io/#person"
         }
@@ -350,6 +388,37 @@
         "operatingSystem": "Web, iOS, Android (PWA)",
         "description": "Cloud Point of Sale (POS) and inventory management platform designed for Indonesian MSMEs (UMKM), retail shops, and cafes.",
         "url": "https://github.com/roedyrustam/posas",
+        "codeRepository": "https://github.com/roedyrustam/posas",
+        "programmingLanguage": ["JavaScript", "PWA"],
+        "author": {
+          "@id": "https://roedyrustam.github.io/#person"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://roedyrustam.github.io/#beanshub",
+        "name": "BeansHub ERP",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Cross-platform (Web, PWA)",
+        "description": "Roastery batch inventory management and green coffee bean lot tracking platform for specialty coffee SMEs.",
+        "url": "https://github.com/roedyrustam/beanshub1",
+        "codeRepository": "https://github.com/roedyrustam/beanshub1",
+        "programmingLanguage": ["TypeScript", "JavaScript"],
+        "author": {
+          "@id": "https://roedyrustam.github.io/#person"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://roedyrustam.github.io/#doku-gemini-mcp",
+        "name": "doku-gemini-mcp",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform (Node.js, TypeScript)",
+        "description": "Model Context Protocol (MCP v1.x) server integrating DOKU payment gateway for autonomous agent commerce and AI checkout flows.",
+        "url": "https://github.com/roedyrustam/doku-gemini-mcp",
+        "codeRepository": "https://github.com/roedyrustam/doku-gemini-mcp",
+        "programmingLanguage": "TypeScript",
+        "license": "https://opensource.org/licenses/MIT",
         "author": {
           "@id": "https://roedyrustam.github.io/#person"
         }
@@ -1784,6 +1853,70 @@
               Kolaborasi terbuka melalui repositori GitHub di <a href="https://github.com/roedyrustam" target="_blank"
                 rel="noopener">@roedyrustam</a>, diskusi di Twitter/X <a href="https://x.com/rudyasho" target="_blank"
                 rel="noopener">@rudyasho</a>, atau lewat tautan di bagian Connect di bawah ini.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-card" data-faq="6">
+          <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-6">
+            <span class="faq-q-text">Apa solusi yang ditawarkan Roedy Rustam sebagai Konsultan UMKM di Indonesia?</span>
+            <span class="faq-chevron">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer-wrapper" id="faq-ans-6">
+            <p class="faq-answer-content">
+              Membantu bisnis ritel, kafe, dan UMKM melakukan transformasi digital tanpa biaya sewa software bulanan melalui sistem <strong>Kasir Simpel</strong> (Cloud POS PWA offline-first), <strong>BeansHub ERP</strong> (manajemen inventaris batch roasting), dan evaluasi mutu komoditas <strong>CuppingNotes</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-card" data-faq="7">
+          <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-7">
+            <span class="faq-q-text">Bagaimana bukti kepakaran Roedy Rustam sebagai AI Engineer di Indonesia?</span>
+            <span class="faq-chevron">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer-wrapper" id="faq-ans-7">
+            <p class="faq-answer-content">
+              Terbukti oleh karya open-source produksi: <strong>vibes-plug</strong> (161 AI developer skills & MCP v1.x di NPM, 109+ stars di GitHub), in-process AI gateway <strong>sinapsai</strong> dengan circuit breaker & provider failover, tool payment MCP <strong>doku-gemini-mcp</strong>, dan arsitektur multi-agent swarm.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-card" data-faq="8">
+          <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-8">
+            <span class="faq-q-text">Mengapa memilih Roedy Rustam sebagai Konsultan IT & Enterprise Architect?</span>
+            <span class="faq-chevron">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer-wrapper" id="faq-ans-8">
+            <p class="faq-answer-content">
+              Memiliki rekam jejak empiris 123+ repositori GitHub, perancang open data <strong>API Wilayah Indonesia 2024</strong> (38 Provinsi, 514 Kab/Kota, 83.000+ Desa), arsitektur microservices terukur, serta audit performa 100/100 Core Web Vitals untuk korporasi dan startup.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-card" data-faq="9">
+          <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-9">
+            <span class="faq-q-text">Apakah Roedy Rustam menyediakan program Trainer IT atau Workshop AI Developer?</span>
+            <span class="faq-chevron">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer-wrapper" id="faq-ans-9">
+            <p class="faq-answer-content">
+              Ya, menyelenggarakan corporate training dan workshop developer intensif untuk implementasi AI Agents, Model Context Protocol (MCP v1.x), prompt engineering terstruktur, serta Doktrin Anti-Slop (Zero Tech Debt) untuk tim rekayasa perangkat lunak korporasi.
             </p>
           </div>
         </div>

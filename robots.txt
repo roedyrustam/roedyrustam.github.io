@@ -1,23 +1,44 @@
 # ==============================================================================
 # robots.txt for https://roedyrustam.github.io/
-# Optimized for Web Crawlers, Search Engines & AI Models (GEO / 2026 Edition)
+# Optimized for Web Crawlers, Search Engines & AI Models (GEO / LLMO 2026 Edition)
 # ==============================================================================
 
 User-agent: *
 Allow: /
 Disallow: /assets/private/
 
-# AI Crawlers & LLM Agents (Explicitly allowed for GEO & Generative Answers)
-User-agent: Google-Extended
+# Explicitly Allow LLM Knowledge Indexes
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# ==============================================================================
+# AI Crawlers, LLM Agents & Generative Search Engines
+# (Explicitly allowed for GEO, LLMO, AI Overviews & Real-Time Citations)
+# ==============================================================================
+
+# OpenAI Search & Crawlers (ChatGPT Search, GPT-5, SearchGPT)
+User-agent: GPTBot
 Allow: /
 
-User-agent: GPTBot
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
+# Google AI & Gemini Models (Google AI Mode, Gemini Overviews)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+# Anthropic Claude & Claude Code
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-Web
@@ -26,28 +47,60 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Amazonbot
+# Perplexity AI Engine
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: Bytespider
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Cohere-ai
-Allow: /
-
+# DeepSeek AI
 User-agent: DeepSeekBot
 Allow: /
 
+# Mistral AI
+User-agent: MistralAI-Crawler
+Allow: /
+
+# Meta AI & Llama Training
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# Sitemap & LLM Knowledge Index
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon & Alexa AI
+User-agent: Amazonbot
+Allow: /
+
+# ByteDance / TikTok AI
+User-agent: Bytespider
+Allow: /
+
+# Cohere AI
+User-agent: Cohere-ai
+Allow: /
+
+# DuckDuckGo AI & Search
+User-agent: DuckDuckBot
+Allow: /
+
+# Common Crawl (Foundation for Open LLM Training)
+User-agent: CCBot
+Allow: /
+
+# Tavily AI Search API
+User-agent: TavilyBot
+Allow: /
+
+# Diffbot Knowledge Graph
+User-agent: Diffbot
+Allow: /
+
+# ==============================================================================
+# Sitemaps & LLM Protocol Discovery
+# ==============================================================================
 Sitemap: https://roedyrustam.github.io/sitemap.xml
 llms-txt: https://roedyrustam.github.io/llms.txt
 llms-full-txt: https://roedyrustam.github.io/llms-full.txt
